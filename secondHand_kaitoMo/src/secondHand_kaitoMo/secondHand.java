@@ -8,7 +8,11 @@ public class secondHand {
 		System.out.println("testing number two");
 		System.out.println("testing number three");
 		System.out.println("testing number four");
+<<<<<<< Updated upstream
 		// hi 2
+=======
+		// hi 3
+>>>>>>> Stashed changes
 
 	}
 
