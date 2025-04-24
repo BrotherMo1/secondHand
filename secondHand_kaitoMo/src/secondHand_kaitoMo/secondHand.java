@@ -7,8 +7,8 @@ public class secondHand {
 		System.out.println("testing");
 		System.out.println("testing number two");
 		System.out.println("testing number three");
-		System.out.println("testing number four");\
-		// hi 
+		System.out.println("testing number four");
+		// hi 2
 
 	}
 
