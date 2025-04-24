@@ -9,7 +9,6 @@ public class secondHand {
 		System.out.println("testing number three");
 		System.out.println("testing number four");
 
-
 	}
 
 }
