@@ -92,7 +92,7 @@ public class secondHand {
 		int com = 0;
 		int user = 0;
 		int com = (int)(Math.random() * 10);
-		int firstOrSecond = (int)(Math.random() * 2);
+		int firstOrSecond = (int)(Math.random() * 2) + 1;
 		JOptionPane.showMessageDialog(null, "You are going" + firstOrSecond);
 		
 	} // playerOne
