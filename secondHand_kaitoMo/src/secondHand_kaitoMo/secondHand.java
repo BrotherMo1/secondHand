@@ -91,7 +91,8 @@ public class secondHand {
 		JOptionPane.showMessageDialog(null, "Single player selected");
 		int com = 0;
 		int user = 0;
-		int firstOrSecond = (int)(Math.random() * 10);
+		int com = (int)(Math.random() * 10);
+		int firstOrSecond = (int)(Math.random() * 3);
 		JOptionPane.showMessageDialog(null, "You are going" + firstOrSecond);
 		
 	} // playerOne
