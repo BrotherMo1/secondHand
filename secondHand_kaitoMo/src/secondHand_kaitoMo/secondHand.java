@@ -210,7 +210,7 @@ public class secondHand {
 		JOptionPane.showMessageDialog(null, "Player One, your number is " + numP1);
 		JOptionPane.showMessageDialog(null, "Player Two, your number is " + numP2);
 		
-		userOne = numP1 - numP2;
+		userOne = numP2 - numP1;
 		if (userOne < 0) {
 			userOne = Math.abs(userOne);
 		} // if
