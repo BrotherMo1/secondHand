@@ -155,9 +155,9 @@ public class secondHand {
 		JOptionPane.showMessageDialog(null, "Player Two, your number is " + numP2);
 		
 		userTwo = numP1 - numP2;
-		result1[0] = userTwo;
-		result1[1] = numP2;
-		JOptionPane.showMessageDialog(null, "Player Two, your result is  " + numP2 + userTwo);
+		result1[0] = numP2;
+		result1[1] = userTwo;
+		JOptionPane.showMessageDialog(null, "Player Two, your result is  " + result1[0] + result1[1]);
 		
 		
 	} // playerTwo
