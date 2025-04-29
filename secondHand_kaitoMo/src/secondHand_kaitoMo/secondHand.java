@@ -153,11 +153,70 @@ public class secondHand {
 		} while(true);
 		JOptionPane.showMessageDialog(null, "Player One, your number is " + numP1);
 		JOptionPane.showMessageDialog(null, "Player Two, your number is " + numP2);
-		
+
 		userTwo = numP1 - numP2;
-		result1[0] = numP2;
-		result1[1] = userTwo;
-		JOptionPane.showMessageDialog(null, "Player Two, your result is  " + result1[0] + result1[1]);
+		if (userTwo < 0) {
+			userTwo = Math.abs(userTwo);
+		} // if
+
+		result2[0] = numP2;
+		result2[1] = userTwo;
+		JOptionPane.showMessageDialog(null, "Player Two, your result is  " + result2[0] + result2[1]);
+		
+		
+		
+		message = "Player One: select your positive single digit number";
+		do {
+			input = JOptionPane.showInputDialog(null, message);
+			if (input == null) {
+				System.exit(0);
+			} // if
+			try {
+				numP1 = Integer.parseInt(input);
+			} //try
+			catch(Exception e) {
+				message = "That's not a valid number, enter a positive number. ";
+				continue;
+			} //catch
+			 //check additional validity with if statements
+			if (numP1 < 0 || numP1 > 9) {
+				message = "The age must be positive and under 10. Please try again. ";
+			continue;
+			} // if
+			break;
+		} while(true);
+
+		
+		message = "Player Two: select your positive single digit number";
+		do {
+			input = JOptionPane.showInputDialog(null, message);
+			if (input == null) {
+				System.exit(0);
+			} // if
+			try {
+				numP2 = Integer.parseInt(input);
+			} //try
+			catch(Exception e) {
+				message = "That's not a valid number, enter a positive number. ";
+				continue;
+			} //catch
+			 //check additional validity with if statements
+			if (numP2 < 0 || numP2 > 9) {
+				message = "The age must be positive and under 10. Please try again. ";
+			continue;
+			} // if
+			break;
+		} while(true);
+		JOptionPane.showMessageDialog(null, "Player One, your number is " + numP1);
+		JOptionPane.showMessageDialog(null, "Player Two, your number is " + numP2);
+		
+		userOne = numP1 - numP2;
+		if (userOne < 0) {
+			userOne = Math.abs(userOne);
+		} // if
+		result1[0] = numP1;		 
+		result1[1] = userOne;
+		JOptionPane.showMessageDialog(null, "Player One, your result is  " + result1[0] + result1[1]);
 		
 		
 	} // playerTwo
