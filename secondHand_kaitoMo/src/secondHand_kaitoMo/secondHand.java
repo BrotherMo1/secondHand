@@ -41,7 +41,7 @@ public class secondHand {
 		int choice = 0;	
 		
 		Object[] options = { "Instructions", "1P", "2P", "Quit" };
-		choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Main Menu",
+		choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Second Hand Main Menu",
 		JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
 		null, options, options[0]);
 		return choice;
@@ -91,15 +91,100 @@ public class secondHand {
 		JOptionPane.showMessageDialog(null, "Single player selected");
 		int com = 0;
 		int user = 0;
-		int com = (int)(Math.random() * 10);
+		com = (int)(Math.random() * 10);
 		int firstOrSecond = (int)(Math.random() * 2) + 1;
 		JOptionPane.showMessageDialog(null, "You are going" + firstOrSecond);
 		
 	} // playerOne
 	
 	public static void twoPlayer (){
+		String input = "";
+		String error = "";
+		int userOne = 0;
+		int userTwo = 0;
+		int numP1 = 0;
+		int numP2 = 0;
+		int [] result1 = {0, 0, 0, 0, 0, 0};
+		int [] result2 = {0, 0, 0, 0, 0, 0};
+		
 		JOptionPane.showMessageDialog(null, "Two player selected");
 		
-	} // playerOne
+		String message = "Player One: select your positive single digit number";
+		do {
+			input = JOptionPane.showInputDialog(null, message);
+			if (input == null) {
+				System.exit(0);
+			} // if
+			try {
+				numP1 = Integer.parseInt(input);
+			} //try
+			catch(Exception e) {
+				message = "That's not a valid number, enter a positive number. ";
+				continue;
+			} //catch
+			 //check additional validity with if statements
+			if (numP1 < 0 || numP1 > 9) {
+				message = "The age must be positive and under 10. Please try again. ";
+			continue;
+			} // if
+			break;
+		} while(true);
+
+		
+		message = "Player Two: select your positive single digit number";
+		do {
+			input = JOptionPane.showInputDialog(null, message);
+			if (input == null) {
+				System.exit(0);
+			} // if
+			try {
+				numP2 = Integer.parseInt(input);
+			} //try
+			catch(Exception e) {
+				message = "That's not a valid number, enter a positive number. ";
+				continue;
+			} //catch
+			 //check additional validity with if statements
+			if (numP2 < 0 || numP2 > 9) {
+				message = "The age must be positive and under 10. Please try again. ";
+			continue;
+			} // if
+			break;
+		} while(true);
+		JOptionPane.showMessageDialog(null, "Player One, your number is " + numP1);
+		JOptionPane.showMessageDialog(null, "Player Two, your number is " + numP2);
+		
+		userTwo = numP1 - numP2;
+		result1[0] = userTwo;
+		result1[1] = numP2;
+		JOptionPane.showMessageDialog(null, "Player Two, your result is  " + numP2 + userTwo);
+		
+		
+	} // playerTwo
 	
 } // class
+
+
+
+//for (int i = 0; i < 2; i++) {
+//do {
+//	input = JOptionPane.showInputDialog(null, message);
+//	if (input == null) {
+//		System.exit(0);
+//	} // if
+//	try {
+//		numP[i] = Integer.parseInt(input);
+//		System.out.println(numP[i] + Integer.parseInt(input));
+//	} //try
+//	catch(Exception e) {
+//		message = "That's not a valid number, enter a positive number. ";
+//		continue;
+//	} //catch
+//	 //check additional validity with if statements
+//	if (numP[i] < 0 || numP[i] > 9) {
+//		message = "The number must be positive and under 10. Please try again. ";
+//	continue;
+//	} // if
+//	break;
+//} while(true);
+//} // for
