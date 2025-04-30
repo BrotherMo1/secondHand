@@ -106,10 +106,11 @@ public class secondHand {
 		int numP2 = 0;
 		int [] result1 = {0, 0, 0, 0, 0, 0};
 		int [] result2 = {0, 0, 0, 0, 0, 0};
-		
+		String message = "Player One: select your positive single digit number";
+		String message2 = "Player Two: select your positive single digit number";
 		JOptionPane.showMessageDialog(null, "Two player selected");
 		
-		String message = "Player One: select your positive single digit number";
+
 		do {
 			input = JOptionPane.showInputDialog(null, message);
 			if (input == null) {
@@ -131,7 +132,6 @@ public class secondHand {
 		} while(true);
 
 		
-		message = "Player Two: select your positive single digit number";
 		do {
 			input = JOptionPane.showInputDialog(null, message);
 			if (input == null) {
@@ -141,12 +141,12 @@ public class secondHand {
 				numP2 = Integer.parseInt(input);
 			} //try
 			catch(Exception e) {
-				message = "That's not a valid number, enter a positive number. ";
+				message2 = "That's not a valid number, enter a positive number. ";
 				continue;
 			} //catch
 			 //check additional validity with if statements
 			if (numP2 < 0 || numP2 > 9) {
-				message = "The age must be positive and under 10. Please try again. ";
+				message2 = "The age must be positive and under 10. Please try again. ";
 			continue;
 			} // if
 			break;
@@ -219,6 +219,30 @@ public class secondHand {
 		JOptionPane.showMessageDialog(null, "Player One, your result is  " + result1[0] + result1[1]);
 		
 		
+		
+		int sum1 = 0;
+		int sum2 = 0;
+		String won;
+		// calculate the whole score for both players
+		for (int i = 0; i < result1.length; i++) {
+			sum1 += result1[i];
+			sum2 += result2[i];
+		} // for
+		
+		int finalScore1 = sum1;
+		int finalScore2 = sum2;
+		
+		if (finalScore1 > finalScore2) {
+			won = "Player One won!";
+		}else {
+			won = "Player Two won!";
+		} // else
+		
+		message = "Player One's score is "; 
+		message2 = "Player Two's score is ";
+		JOptionPane.showMessageDialog(null, won);
+		JOptionPane.showMessageDialog(null, message + finalScore1 + " " +  message2 + finalScore2);
+
 	} // playerTwo
 	
 } // class
