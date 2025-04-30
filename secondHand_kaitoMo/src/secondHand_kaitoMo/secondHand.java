@@ -106,6 +106,9 @@ public class secondHand {
 		int numP2 = 0;
 		int [] result1 = {0, 0, 0, 0, 0, 0};
 		int [] result2 = {0, 0, 0, 0, 0, 0};
+		int finalScore1 = 0;
+		int finalScore2 = 0;
+		String won;
 		String message = "Player One: select your positive single digit number";
 		String message2 = "Player Two: select your positive single digit number";
 		JOptionPane.showMessageDialog(null, "Two player selected");
@@ -218,26 +221,22 @@ public class secondHand {
 		result1[1] = userOne;
 		JOptionPane.showMessageDialog(null, "Player One, your result is  " + result1[0] + result1[1]);
 		
-		
-		
-		int sum1 = 0;
-		int sum2 = 0;
-		String won;
+
 		// calculate the whole score for both players
 		for (int i = 0; i < result1.length; i++) {
-			sum1 += result1[i];
-			sum2 += result2[i];
+			finalScore1 += result1[i];
+			finalScore2 += result2[i];
 		} // for
-		
-		int finalScore1 = sum1;
-		int finalScore2 = sum2;
-		
+
+		// determine who won the game
 		if (finalScore1 > finalScore2) {
 			won = "Player One won!";
 		}else {
 			won = "Player Two won!";
 		} // else
 		
+		
+		// display score for both player
 		message = "Player One's score is "; 
 		message2 = "Player Two's score is ";
 		JOptionPane.showMessageDialog(null, won);
