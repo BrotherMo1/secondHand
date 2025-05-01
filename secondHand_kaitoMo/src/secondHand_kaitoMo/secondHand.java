@@ -1,3 +1,6 @@
+/* hi mo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+are you aight? i'll try to work on the project myself :D (but you better fuckin help)*/
+
 package secondHand_kaitoMo;
 
 import java.io.BufferedReader;
