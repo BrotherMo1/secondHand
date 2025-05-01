@@ -96,11 +96,12 @@ public class secondHand {
 		int user = 0;
 		com = (int)(Math.random() * 10);
 		int firstOrSecond = (int)(Math.random() * 2) + 1;
-		JOptionPane.showMessageDialog(null, "You are going" + firstOrSecond);
+		JOptionPane.showMessageDialog(null, "You are player " + firstOrSecond);
 		
 	} // playerOne
 	
 	public static void twoPlayer (){
+		// declare variables
 		String input = "";
 		String error = "";
 		int userOne = 0;
@@ -111,16 +112,16 @@ public class secondHand {
 		int [] result2 = {0, 0, 0, 0, 0, 0};
 		int finalScore1 = 0;
 		int finalScore2 = 0;
-		int exit = 0;
-		// this variable is to change the "your result is" message and make it work properly
-		int resultchanger = 0;
 		String won;
 		String message = "Player One: select your positive single digit number";
 		String message2 = "Player Two: select your positive single digit number";
+		String output = "";
+		
+		// gamemode message
 		JOptionPane.showMessageDialog(null, "Two player selected");
 		
 		// game loop
-		for(int f = 0; f < 2; f++) {
+		for(int f = 0; f < 5; f++) {
 			userOne = 0;
 			userTwo = 0;
 			numP1 = 0;
@@ -176,9 +177,16 @@ public class secondHand {
 			if (f == 0) {
 				result2[0] = numP2;	
 			} // if
-			result2[
-			        f + 1] = userTwo;
-			JOptionPane.showMessageDialog(null, "Player Two, your result is  " + result2[0] + result2[1] + result2[2] + result2[3] + result2[4] + result2[5]);
+			result2[f + 1] = userTwo;
+			output = "";
+			for(int i = 0; i < result2.length; i++) {
+				if (result2[i] != 0) {
+					output += (result2[i]);
+				}
+				
+			}
+			JOptionPane.showMessageDialog(null, "Player Two, your result is: " + output);
+			
 			
 			
 			
@@ -235,8 +243,14 @@ public class secondHand {
 				result1[0] = numP1;	
 			} // if
 			result1[f + 1] = userOne;
-			JOptionPane.showMessageDialog(null, "Player One, your result is  " + result1[0] + result1[1] + result1[2] + result1[3] + result1[4] + result1[5]);
-			
+			output = "";
+			for(int i = 0; i < result1.length; i++) {
+				if (result1[i] != 0) {
+					output += (result1[i]);
+				}
+				
+			}
+			JOptionPane.showMessageDialog(null, "Player One, your result is: " + output);
 
 			// calculate the whole score for both players
 			for (int i = 0; i < result1.length; i++) {
