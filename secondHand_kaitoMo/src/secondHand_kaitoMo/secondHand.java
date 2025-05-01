@@ -1,5 +1,5 @@
 /* hi mo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-are you aight? i'll try to work on the project myself :D (but you better fuckin help)*/
+are you aight? i'll try to finish sum shi :D*/
 
 package secondHand_kaitoMo;
 
