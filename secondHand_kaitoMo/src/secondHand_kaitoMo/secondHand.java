@@ -1,5 +1,4 @@
-/* hi mo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-are you aight? i'll try to finish sum shi :D*/
+// WE NEED A BETTER USER INTERFACE
 
 package secondHand_kaitoMo;
 
@@ -125,6 +124,8 @@ public class secondHand {
 			userTwo = 0;
 			numP1 = 0;
 			numP2 = 0;
+			message = "Player One: select your positive single digit number";
+			message2 = "Player Two: select your positive single digit number";
 			do {
 				input = JOptionPane.showInputDialog(null, message);
 				if (input == null) {
@@ -139,13 +140,14 @@ public class secondHand {
 				} //catch
 				 //check additional validity with if statements
 				if (numP1 < 0 || numP1 > 9) {
-					message = "The age must be positive and under 10. Please try again. ";
+					message = "The number must be positive and under 10. Please try again. ";
 				continue;
 				} // if
 				break;
 			} while(true);
 
-			
+			message = "Player One: select your positive single digit number";
+			message2 = "Player Two: select your positive single digit number";
 			do {
 				input = JOptionPane.showInputDialog(null, message2);
 				if (input == null) {
@@ -160,7 +162,7 @@ public class secondHand {
 				} //catch
 				 //check additional validity with if statements
 				if (numP2 < 0 || numP2 > 9) {
-					message2 = "The age must be positive and under 10. Please try again. ";
+					message2 = "The number must be positive and under 10. Please try again. ";
 				continue;
 				} // if
 				break;
