@@ -183,9 +183,9 @@ public class secondHand {
 			for(int i = 0; i < result2.length; i++) {
 				if (result2[i] != 0) {
 					output += (result2[i]);
-				}
+				} // if
 				
-			}
+			} // for
 			JOptionPane.showMessageDialog(null, "Player Two, your result is: " + output);
 			
 			
@@ -259,7 +259,7 @@ public class secondHand {
 				finalScore2 += result2[i];
 			} // for
 			
-		}
+		} // for
 
 		// determine who won the game
 		if (finalScore1 > finalScore2) {
@@ -279,27 +279,3 @@ public class secondHand {
 	
 } // class
 
-
-
-//for (int i = 0; i < 2; i++) {
-//do {
-//	input = JOptionPane.showInputDialog(null, message);
-//	if (input == null) {
-//		System.exit(0);
-//	} // if
-//	try {
-//		numP[i] = Integer.parseInt(input);
-//		System.out.println(numP[i] + Integer.parseInt(input));
-//	} //try
-//	catch(Exception e) {
-//		message = "That's not a valid number, enter a positive number. ";
-//		continue;
-//	} //catch
-//	 //check additional validity with if statements
-//	if (numP[i] < 0 || numP[i] > 9) {
-//		message = "The number must be positive and under 10. Please try again. ";
-//	continue;
-//	} // if
-//	break;
-//} while(true);
-//} // for
