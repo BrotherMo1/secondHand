@@ -88,15 +88,112 @@ public class secondHand {
 	
 	} // instructions
 	
+	
+	
 	public static void singlePlayer (){
-		JOptionPane.showMessageDialog(null, "Single player selected");
-		int com = 0;
+		int choice = 0;
+		int rand = 0;
 		int user = 0;
-		com = (int)(Math.random() * 10);
-		int firstOrSecond = (int)(Math.random() * 2) + 1;
-		JOptionPane.showMessageDialog(null, "You are player " + firstOrSecond);
+		int numP = 0;
+		int com = 0;
+		String message = "";
+		String input = "";
+		int difficulty = 0;
+		JOptionPane.showMessageDialog(null, "Single player selected, you are player one");
+		
+		// difficulty
+		Object[] options = { "Easy", "Medium", "Hard", "Quit" };
+		choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Difficulty selection",
+		JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+		null, options, options[0]);
+		
+		// if user wants to quit
+		if (choice == -1 || choice == 3) {
+			System.exit(0);
+		} // if 
+		
+		// player input
+		message = "Player One: select your positive single digit number";
+		do {
+			input = JOptionPane.showInputDialog(null, message);
+			if (input == null) {
+				System.exit(0);
+			} // if
+			try {
+				numP = Integer.parseInt(input);
+			} //try
+			catch(Exception e) {
+				message = "That's not a valid number, enter a positive number. ";
+				continue;
+			} //catch
+			 //check additional validity with if statements
+			if (numP < 0 || numP > 9) {
+				message = "The number must be positive and under 10. Please try again. ";
+			continue;
+			} // if
+			break;
+		} while(true);
+		
+		
+		// computer input
+		rand = (int)(Math.random() * 11);
+		System.out.println(rand);
+		switch (choice) {
+		case 0:
+			// user picked easy
+			difficulty = 1;
+			// if rand = between 0 and 2 choose best num
+			// if rand = between 3 and 5 choose med num
+			// if rand = between 6 and 10 choose worst num
+			switch (rand) {
+			case 0: 
+			case 1:
+			case 2:
+				int temp = ((int)Math.random() * 2);
+				com = numP - temp;
+				System.out.println(temp);
+				break;
+			case 3:
+			case 4:
+			case 5:
+				temp = ((int)Math.random() * 3);
+				com = numP - temp;
+				System.out.println(temp);
+				break;
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+				temp = ((int)Math.random() * 5);
+				com = numP - temp;
+				System.out.println(temp);
+				break;
+			} // switch
+			com = Math.abs(com);
+			System.out.println(com);
+			
+			break;
+		case 1:
+			// user picked medium
+			difficulty = 2;
+			// if rand = between 0 and 4 choose best num
+			// if rand = between 5 and 8 choose med num
+			// if rand = between 9 and 10 choose worst num
+			break;
+		case 2:
+			// user picked hard
+			difficulty = 3;
+			// if rand = between 0 and 7 choose best num
+			// if rand = between 7 and 9 choose med num
+			// if rand = between 10 choose worst num
+			break;
+		} // switch
+		
 		
 	} // playerOne
+	
+	
 	
 	public static void twoPlayer (){
 		// declare variables
