@@ -137,7 +137,8 @@ public class secondHand {
 		
 		// computer input
 		rand = (int)(Math.random() * 11);
-		System.out.println(rand);
+		rand = 0;
+//		System.out.println("decider of diffi " + rand);
 		switch (choice) {
 		case 0:
 			// user picked easy
@@ -145,33 +146,38 @@ public class secondHand {
 			// if rand = between 0 and 2 choose best num
 			// if rand = between 3 and 5 choose med num
 			// if rand = between 6 and 10 choose worst num
+			int temp = 0;
 			switch (rand) {
 			case 0: 
 			case 1:
 			case 2:
-				int temp = ((int)Math.random() * 2);
+				temp = (int)(Math.random() * (numP - (numP - 2) + 1)) + (numP - 2);  // max user number   min user number-2
+				temp = Math.abs(temp);
 				com = numP - temp;
-				System.out.println(temp);
+				System.out.println("TEMP IS " + temp);
 				break;
 			case 3:
 			case 4:
 			case 5:
-				temp = ((int)Math.random() * 3);
+				temp = (int)(Math.random() * ((numP - 3) - (numP - 5) + 1)) + (numP - 5);  // max user number-3   min user number-5
+				temp = Math.abs(temp);
 				com = numP - temp;
-				System.out.println(temp);
+				System.out.println("TEMP IS " + temp);
 				break;
 			case 6:
 			case 7:
 			case 8:
 			case 9:
 			case 10:
-				temp = ((int)Math.random() * 5);
+				temp = (int)(Math.random() * ((numP - 6) - (numP - 10) + 1)) + (numP - 10);  // max user number-6   min user number-10
+				temp = Math.abs(temp);
 				com = numP - temp;
-				System.out.println(temp);
+				System.out.println("TEMP IS " + temp);
 				break;
 			} // switch
 			com = Math.abs(com);
-			System.out.println(com);
+			System.out.println("com is " + com);
+			System.out.println("diff is " + Math.abs((numP - com)));
 			
 			break;
 		case 1:
@@ -180,13 +186,76 @@ public class secondHand {
 			// if rand = between 0 and 4 choose best num
 			// if rand = between 5 and 8 choose med num
 			// if rand = between 9 and 10 choose worst num
+			switch (rand) {
+			case 0: 
+			case 1:
+			case 2:
+				temp = (int)(Math.random() * (numP - (numP - 4) + 1)) + (numP - 4);  // max user number   min user number-2
+				temp = Math.abs(temp);
+				com = numP - temp;
+				System.out.println("TEMP IS " + temp);
+				break;
+			case 3:
+			case 4:
+			case 5:
+				temp = (int)(Math.random() * ((numP - 5) - (numP - 8) + 1)) + (numP - 8);  // max user number-3   min user number-5
+				temp = Math.abs(temp);
+				com = numP - temp;
+				System.out.println("TEMP IS " + temp);
+				break;
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+				temp = (int)(Math.random() * ((numP - 9) - (numP - 10) + 1)) + (numP - 10);  // max user number-6   min user number-10
+				temp = Math.abs(temp);
+				com = numP - temp;
+				System.out.println("TEMP IS " + temp);
+				break;
+			} // switch
+			com = Math.abs(com);
+			System.out.println("com is " + com);
+			System.out.println("diff is " + Math.abs((numP - com)));
+			
 			break;
 		case 2:
 			// user picked hard
 			difficulty = 3;
 			// if rand = between 0 and 7 choose best num
-			// if rand = between 7 and 9 choose med num
+			// if rand = between 8 and 9 choose med num
 			// if rand = between 10 choose worst num
+			switch (rand) {
+			case 0: 
+			case 1:
+			case 2:
+				temp = (int)(Math.random() * (numP - (numP - 7) + 1)) + (numP - 7);  // max user number   min user number-2
+				temp = Math.abs(temp);
+				com = numP - temp;
+				System.out.println("TEMP IS " + temp);
+				break;
+			case 3:
+			case 4:
+			case 5:
+				temp = (int)(Math.random() * ((numP - 8) - (numP - 9) + 1)) + (numP - 9);  // max user number-3   min user number-5
+				temp = Math.abs(temp);
+				com = numP - temp;
+				System.out.println("TEMP IS " + temp);
+				break;
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+				temp = 10;  // max user number-6   min user number-10
+				temp = Math.abs(temp);
+				com = numP - temp;
+				System.out.println("TEMP IS " + temp);
+				break;
+			} // switch
+			com = Math.abs(com);
+			System.out.println("com is " + com);
+			System.out.println("diff is " + Math.abs((numP - com)));
 			break;
 		} // switch
 		
