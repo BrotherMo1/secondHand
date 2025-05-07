@@ -101,19 +101,19 @@ public class secondHand {
 		int difficulty = 0;
 		JOptionPane.showMessageDialog(null, "Single player selected, you are going first");
 		
+		// difficulty
+		Object[] options = { "Easy", "Medium", "Hard", "Quit" };
+		choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Difficulty selection",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+				null, options, options[0]);
+		
+		// if user wants to quit
+		if (choice == -1 || choice == 3) {
+			System.exit(0);
+		} // if 
+			
 		for (int i = 0; i < 5; i++) {
-		
-			// difficulty
-			Object[] options = { "Easy", "Medium", "Hard", "Quit" };
-			choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Difficulty selection",
-					JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-					null, options, options[0]);
-		
-			// if user wants to quit
-			if (choice == -1 || choice == 3) {
-				System.exit(0);
-			} // if 
-		
+			
 			// player input
 			message = "Player: please select your positive single digit number";
 			do {
