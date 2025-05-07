@@ -99,7 +99,7 @@ public class secondHand {
 		String message = "";
 		String input = "";
 		int difficulty = 0;
-		JOptionPane.showMessageDialog(null, "Single player selected, you are player one");
+		JOptionPane.showMessageDialog(null, "Single player selected, you are going first");
 		
 		// difficulty
 		Object[] options = { "Easy", "Medium", "Hard", "Quit" };
@@ -113,7 +113,7 @@ public class secondHand {
 		} // if 
 		
 		// player input
-		message = "Player One: select your positive single digit number";
+		message = "Player: please select your positive single digit number";
 		do {
 			input = JOptionPane.showInputDialog(null, message);
 			if (input == null) {
@@ -123,12 +123,12 @@ public class secondHand {
 				numP = Integer.parseInt(input);
 			} //try
 			catch(Exception e) {
-				message = "That's not a valid number, enter a positive number. ";
+				message = "That's not a valid number, please enter a positive number. ";
 				continue;
 			} //catch
 			 //check additional validity with if statements
 			if (numP < 0 || numP > 9) {
-				message = "The number must be positive and under 10. Please try again. ";
+				message = "Your number must be positive and under 10. Please try again. ";
 			continue;
 			} // if
 			break;
