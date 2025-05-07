@@ -101,39 +101,41 @@ public class secondHand {
 		int difficulty = 0;
 		JOptionPane.showMessageDialog(null, "Single player selected, you are going first");
 		
-		// difficulty
-		Object[] options = { "Easy", "Medium", "Hard", "Quit" };
-		choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Difficulty selection",
-		JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-		null, options, options[0]);
+		for (int i = 0; i < 5; i++) {
 		
-		// if user wants to quit
-		if (choice == -1 || choice == 3) {
-			System.exit(0);
-		} // if 
+			// difficulty
+			Object[] options = { "Easy", "Medium", "Hard", "Quit" };
+			choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Difficulty selection",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+					null, options, options[0]);
 		
-		// player input
-		message = "Player: please select your positive single digit number";
-		do {
-			input = JOptionPane.showInputDialog(null, message);
-			if (input == null) {
+			// if user wants to quit
+			if (choice == -1 || choice == 3) {
 				System.exit(0);
-			} // if
-			try {
-				numP = Integer.parseInt(input);
-			} //try
-			catch(Exception e) {
-				message = "That's not a valid number, please enter a positive number. ";
-				continue;
-			} //catch
-			 //check additional validity with if statements
-			if (numP < 0 || numP > 9) {
-				message = "Your number must be positive and under 10. Please try again. ";
-			continue;
-			} // if
-			break;
-		} while(true);
+			} // if 
 		
+			// player input
+			message = "Player: please select your positive single digit number";
+			do {
+				input = JOptionPane.showInputDialog(null, message);
+				if (input == null) {
+					System.exit(0);
+				} // if
+				try {
+					numP = Integer.parseInt(input);
+				} //try
+				catch(Exception e) {
+					message = "That's not a valid number, please enter a positive number. ";
+					continue;
+				} //catch
+				//check additional validity with if statements
+				if (numP < 0 || numP > 9) {
+					message = "Your number must be positive and under 10. Please try again. ";
+					continue;
+				} // if
+				break;
+			} while(true);
+		}
 		
 		// computer input
 		rand = (int)(Math.random() * 11);
