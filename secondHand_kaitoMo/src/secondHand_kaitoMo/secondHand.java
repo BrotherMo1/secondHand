@@ -135,12 +135,10 @@ public class secondHand {
 				} // if
 				break;
 			} while(true);
-		}
 		
 		// computer input
 		rand = (int)(Math.random() * 11);
 		rand = 0;
-//		System.out.println("decider of diffi " + rand);
 		switch (choice) {
 		case 0:
 			// user picked easy
@@ -262,8 +260,9 @@ public class secondHand {
 		} // switch
 		
 		
-	} // playerOne
-	
+		} // playerOne
+
+	} // for
 	
 	
 	public static void twoPlayer (){
