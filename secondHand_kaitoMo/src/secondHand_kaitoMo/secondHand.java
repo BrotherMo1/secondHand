@@ -103,8 +103,8 @@ public class secondHand {
         int finalScoreCom = 0;
         int finalScoreP = 0;
         int turn = 0;
-        int[] result1 = new int[11];
-        int[] resultCom = new int[11];
+        int[] result1 = new int[6];
+        int[] resultCom = new int[6];
         String message = "";
         String input = "";
         String output = "";
@@ -127,7 +127,7 @@ public class secondHand {
             System.exit(0);
         } // if 
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < result1.length; i++) {
 
             // player input
             message = "Player: please select your positive single digit number";
@@ -228,23 +228,18 @@ public class secondHand {
                         case 1:
                         case 2:
                             temp = (int)(Math.random() * (numP - (numP - 7) + 1)) + (numP - 7); // max user number   min user number-2
-                            temp = Math.abs(temp);
-                            com = numP - temp;
                             break;
                         case 3:
                         case 4:
                         case 5:
                             temp = (int)(Math.random() * ((numP - 8) - (numP - 9) + 1)) + (numP - 9); // max user number-3   min user number-5
-                            temp = Math.abs(temp);
-                            com = numP - temp;
                             break;
                         case 6:
                         case 7:
                         case 8:
                         case 9:
                         case 10:
-                            temp = 10; // max user number-6   min user number-10
-
+                            temp = numP - 10; // user number-10
                             break;
                     } // switch
             } // switch
@@ -254,7 +249,12 @@ public class secondHand {
             com = Math.abs(com);
             System.out.println("com is " + com);
             System.out.println("diff is " + Math.abs((numP - com)));
+            if (turn == 0) { 
+            	resultCom[0] = com;
+            	
+            } // if
             
+            // if turn even then it's the players turn to score points
             if (turn % 2 == 0) {
 	
 	            user = com - numP;
@@ -264,7 +264,7 @@ public class secondHand {
 	            if (i == 0) {
 	                result1[0] = numP;
 	            } // if
-	            result1[i + 1] = user;
+	            result1[i+1] = user;
 	            output = "";
 	            for (int f = 0; f < result1.length; f++) {
 	                if (result1[f] != 0) {
@@ -272,15 +272,11 @@ public class secondHand {
 	                } // if
 	
 	            } // for
-	            // calculate the whole score for both players
-	            for (int f = 0; f < result1.length; f++) {
-	                finalScoreP += result1[f];
-	                finalScoreCom += resultCom[f];
-	            } // for
 	            
 	            JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\nYou chose: " + numP + "\nYour score is: " + output);
             } // if
             
+         // if turn odd then it's the bot's turn to score points
             else {
             	
 	            user2 = numP - com;
@@ -290,28 +286,31 @@ public class secondHand {
 	            if (i == 0) {
 	                resultCom[0] = com;
 	            } // if
-	            resultCom[i + 1] = user2;
+	            resultCom[i] = user2;
 	            output = "";
 	            for (int f = 0; f < resultCom.length; f++) {
 	                if (resultCom[f] != 0) {
-	                    output += (resultCom[f]);
+	                    output += resultCom[f];
 	                } // if
 	
 	            } // for
-	            // calculate the whole score for both players
-	            for (int f = 0; f < result1.length; f++) {
-	                finalScoreP += result1[f];
-	                finalScoreCom += resultCom[f];
-	            } // for
-	            
+	              
 	            JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\nYou chose: " + numP + "\nThe bot's score is: " + output);
-            } // if
+            } // else
                  
-            turn += 1;
+            turn ++;
 
         } // for
+        
+        // calculate the whole score for both players
+        for (int f = 0; f < result1.length; f++) {
+            finalScoreP += result1[f];
+            finalScoreCom += resultCom[f];
+        } // for
 
-    } // playerOne
+        JOptionPane.showMessageDialog(null, "Your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
+    } // onePlayer
+        
 
 
     public static void twoPlayer() {
