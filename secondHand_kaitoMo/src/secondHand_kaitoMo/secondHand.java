@@ -103,8 +103,8 @@ public class secondHand {
         int finalScoreCom = 0;
         int finalScoreP = 0;
         int turn = 0;
-        int[] result1 = new int[11];
-        int[] resultCom = new int[11];
+        int[] result1 = new int[12];
+        int[] resultCom = new int[12];
         String message = "";
         String input = "";
         String output = "";
