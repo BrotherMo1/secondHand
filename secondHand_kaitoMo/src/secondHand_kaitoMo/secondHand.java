@@ -35,7 +35,7 @@ public class secondHand {
                 System.exit(0);
             } // if
         } while (true);
-
+        
     } // main
 
     public static int mainMenu() {
@@ -103,8 +103,8 @@ public class secondHand {
         int finalScoreCom = 0;
         int finalScoreP = 0;
         int turn = 0;
-        int[] result1 = new int[11];
-        int[] resultCom = new int[11];
+        int[] result1 = new int[12];
+        int[] resultCom = new int[12];
         String message = "";
         String input = "";
         String output = "";
@@ -227,8 +227,6 @@ public class secondHand {
                         case 0:
                         case 1:
                         case 2:
-                            temp = (int)(Math.random() * (numP - (numP - 7) + 1)) + (numP - 7); // max user number   min user number-2
-                            break;
                         case 3:
                         case 4:
                         case 5:
@@ -250,6 +248,7 @@ public class secondHand {
             System.out.println("com is " + com);
             System.out.println("diff is " + Math.abs((numP - com)));
             if (turn == 0) {
+            	
 
                 resultCom[0] = com;
                 result1[0] = numP;
