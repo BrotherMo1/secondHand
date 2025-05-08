@@ -109,7 +109,7 @@ public class secondHand {
         String input = "";
         String output = "";
 
-        JOptionPane.showMessageDialog(null, "Single player selected, you are going first");
+        JOptionPane.showMessageDialog(null, "Single player selected \n You are going first");
 
         // difficulty
         Object[] options = {
@@ -250,7 +250,9 @@ public class secondHand {
             System.out.println("com is " + com);
             System.out.println("diff is " + Math.abs((numP - com)));
             if (turn == 0) { 
+            	
             	resultCom[0] = com;
+                result1[0] = numP;
             	
             } // if
             
@@ -260,9 +262,6 @@ public class secondHand {
 	            user = com - numP;
 	            if (user < 0) {
 	                user = Math.abs(user);
-	            } // if
-	            if (i == 0) {
-	                result1[0] = numP;
 	            } // if
 	            result1[i+1] = user;
 	            output = "";
@@ -282,9 +281,6 @@ public class secondHand {
 	            user2 = numP - com;
 	            if (user2 < 0) {
 	                user2 = Math.abs(user2);
-	            } // if
-	            if (i == 0) {
-	                resultCom[0] = com;
 	            } // if
 	            resultCom[i] = user2;
 	            output = "";
