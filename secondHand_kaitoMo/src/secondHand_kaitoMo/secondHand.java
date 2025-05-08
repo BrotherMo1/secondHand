@@ -158,7 +158,7 @@ public class secondHand {
 
                     // user picked easy
                     difficulty = 1;
-                    if (turn % 2 == 1) {
+                    if (turn % 2 != 0) {
                         difficulty = 3;
                     }
 
@@ -217,7 +217,7 @@ public class secondHand {
                 case 2:
                     // user picked hard
                     difficulty = 3;
-                    if (turn % 2 == 1) {
+                    if (turn % 2 != 0) {
                         difficulty = 1;
                     }
                     // if rand = between 0 and 7 choose best num
