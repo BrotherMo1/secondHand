@@ -99,12 +99,12 @@ public class secondHand {
         int numP = 0;
         int com = 0;
         int temp = 0;
-        int difficulty = 0;
         int finalScoreCom = 0;
         int finalScoreP = 0;
         int turn = 0;
-        int[] result1 = new int[12];
-        int[] resultCom = new int[12];
+        int[] result1 = new int[(int)(Math.random() * 7) + 7];
+        int[] resultCom = new int[result1.length];
+        System.out.println(result1.length);
         String message = "";
         String input = "";
         String output = "";
@@ -126,8 +126,11 @@ public class secondHand {
         if (choice == -1 || choice == 3) {
             System.exit(0);
         } // if 
-
-        for (int i = 0; i < result1.length; i++) {
+        
+        // turns message
+        JOptionPane.showMessageDialog(null, "There will be " + (result1.length - 1) + " turns");
+        
+        for (int i = 1; i < result1.length; i++) {
 
             // player input
             message = "Player: please select your positive single digit number";
@@ -154,14 +157,7 @@ public class secondHand {
             // computer input
             rand = (int)(Math.random() * 11);
             switch (choice) {
-                case 0:
-
-                    // user picked easy
-                    difficulty = 1;
-                    if (turn % 2 == 1) {
-                        difficulty = 3;
-                    }
-
+                case 2:
                     // if rand = between 0 and 2 choose best num
                     // if rand = between 3 and 5 choose med num
                     // if rand = between 6 and 10 choose worst num
@@ -187,10 +183,7 @@ public class secondHand {
                     break;
                 case 1:
 
-                    // user picked medium
-                    difficulty = 2;
-
-                    // if rand = between 0 and 4 choose best num
+				// if rand = between 0 and 4 choose best num
                     // if rand = between 5 and 8 choose med num
                     // if rand = between 9 and 10 choose worst num
                     switch (rand) {
@@ -214,12 +207,7 @@ public class secondHand {
                     } // switch
                     break;
 
-                case 2:
-                    // user picked hard
-                    difficulty = 3;
-                    if (turn % 2 == 1) {
-                        difficulty = 1;
-                    }
+                case 0:
                     // if rand = between 0 and 7 choose best num
                     // if rand = between 8 and 9 choose med num
                     // if rand = between 10 choose worst num
@@ -263,7 +251,7 @@ public class secondHand {
                 if (user < 0) {
                     user = Math.abs(user);
                 } // if
-                result1[i + 1] = user;
+                result1[i] = user;
                 output = "";
                 for (int f = 0; f < result1.length; f++) {
                     if (result1[f] != 0) {
