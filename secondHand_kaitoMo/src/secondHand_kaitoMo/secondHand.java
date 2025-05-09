@@ -114,6 +114,7 @@ public class secondHand {
         JOptionPane.showMessageDialog(null, "Single player selected \n You are going first");
         
         userName = JOptionPane.showInputDialog(null, "What is your name");
+        userName = userName.trim();
         // difficulty
         Object[] options = {
             "Easy",
@@ -136,7 +137,7 @@ public class secondHand {
         for (int i = 1; i < result1.length; i++) {
 
             // player input
-            message = userName + "  please select your positive single digit number";
+            message = userName + ", please select your positive single digit number";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -330,6 +331,8 @@ public class secondHand {
             numP2 = 0;
             message = userName1 + ": select your positive single digit number";
             message2 = userName2 + ": select your positive single digit number";
+            userName1 = userName1.trim();
+            userName2 = userName2.trim();
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -416,8 +419,8 @@ public class secondHand {
                 break;
             } while (true);
 
-
-            message = userName2 + ": select your positive single digit number";
+            
+            message = userName2 + ", please select your positive single digit number";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
