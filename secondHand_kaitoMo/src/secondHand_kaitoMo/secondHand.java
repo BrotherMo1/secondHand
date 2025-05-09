@@ -34,6 +34,9 @@ public class secondHand {
             if (choice == 3 || choice == -1) {
                 System.exit(0);
             } // if
+            if (choice == 4) {
+            	possesions();
+            }
         } while (true);
 
     } // main
@@ -45,7 +48,8 @@ public class secondHand {
             "Instructions",
             "1P",
             "2P",
-            "Quit"
+            "Quit",
+            "Posessions"
         };
         choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Second Hand Main Menu",
             JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -484,5 +488,30 @@ public class secondHand {
         JOptionPane.showMessageDialog(null, message + finalScore1 + " \45555555n" + message2 + finalScore2);
 
     } // playerTwo
-
+    
+    public static int possesions() {
+    	int cash = 100000;
+    	int savings = 600000;
+    	int choice = 0;
+    	String car = "A car - $40,000";
+    	String house = "A house - $450,000";
+    	Object[] options = {
+                "House",
+                "Car",
+                "Life savings",
+                "Back"
+            };
+    	
+    	JOptionPane.showMessageDialog(null, "You currently own: \n" + house + "\n" + car + "\n" + "$" + cash + " dollars in cash" + "\n" + "$" + savings + " in your life savings");
+    	choice = JOptionPane.showOptionDialog(null, "Choose One of the Following to Sell/Take Out: ", "Market",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null, options, options[0]);
+    	switch (choice) {
+    	case 0:
+    		cash += 400000;
+    		JOptionPane.showMessageDialog(null, "Congratulations! You attempted to sell your house \nand had the price negotioated down to $400,000\nYou now have: $" + cash);
+    	}
+    	return cash;
+    }
+    
 } // class
