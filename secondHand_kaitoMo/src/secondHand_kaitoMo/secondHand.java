@@ -136,7 +136,7 @@ public class secondHand {
         for (int i = 1; i < result1.length; i++) {
 
             // player input
-            message = userName + "  please select your positive single digit number";
+            message = userName + " please select your positive single digit number \n to be subtracted against the bot's number to receive your point";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -151,7 +151,7 @@ public class secondHand {
                 } //catch
                 //check additional validity with if statements
                 if (numP < 0 || numP > 9) {
-                    message = "Your number must be positive and under 10. Please try again. ";
+                    message = userName + "your number must be positive and under 10. Please try again. ";
                     continue;
                 } // if
                 break;
@@ -238,8 +238,6 @@ public class secondHand {
             temp = Math.abs(temp);
             com = numP - temp;
             com = Math.abs(com);
-            System.out.println("com is " + com);
-            System.out.println("diff is " + Math.abs((numP - com)));
             if (turn == 0) {
 
                 resultCom[0] = com;
@@ -263,7 +261,7 @@ public class secondHand {
 
                 } // for
 
-                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\nYou chose: " + numP + "\nYour number is: " + output);
+                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\n" + userName + " you chose: " + numP + "\nYour number is: " + output);
             } // if
 
             // if turn odd then it's the bot's turn to score points
@@ -282,7 +280,7 @@ public class secondHand {
 
                 } // for
 
-                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\nYou chose: " + numP + "\nThe bot's score is: " + output);
+                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\n" + userName + " you chose: " + numP + "\nYour number is: " + output);
             } // else
 
             turn++;
@@ -328,8 +326,17 @@ public class secondHand {
             userTwo = 0;
             numP1 = 0;
             numP2 = 0;
-            message = userName1 + ": select your positive single digit number";
-            message2 = userName2 + ": select your positive single digit number";
+            
+           if (f % 2 == 0) {
+               message = userName1 + ": select your positive single digit number \n to be subtracted against " + userName2 + " to receive your point";
+               message2 = userName2 + ": select your positive single digit number \n to stop " + userName1 + " from getting a good score";
+           } // if
+           
+           if (f % 2 == 1) {
+               message = userName1 + ": select your positive single digit number \n to stop " + userName2 + " from getting a good score";
+               message2 = userName2 + ": select your positive single digit number \n to be subtracted against " + userName1 + " to receive your point";
+           } // if
+
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -350,8 +357,7 @@ public class secondHand {
                 break;
             } while (true);
 
-            message = userName1 + ": select your positive single digit number";
-            message2 = userName2 + ": select your positive single digit number";
+
             do {
                 input = JOptionPane.showInputDialog(null, message2);
                 if (input == null) {
@@ -392,10 +398,8 @@ public class secondHand {
             } // for
             JOptionPane.showMessageDialog(null, userName2 + ", your result is: " + output);
 
-
-
-
-            message = userName1 + ": select your positive single digit number";
+            message = userName1 + ": select your positive single digit number \n to be subtracted against " + userName2 + " to receive your point";
+            
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -417,9 +421,9 @@ public class secondHand {
             } while (true);
 
 
-            message = userName2 + ": select your positive single digit number";
+            message2 = userName2 + ": select your positive single digit number \nto stop " + userName1 + " from getting a good score";
             do {
-                input = JOptionPane.showInputDialog(null, message);
+                input = JOptionPane.showInputDialog(null, message2);
                 if (input == null) {
                     System.exit(0);
                 } // if
@@ -427,12 +431,12 @@ public class secondHand {
                     numP2 = Integer.parseInt(input);
                 } //try
                 catch (Exception e) {
-                    message = userName2 + ": That's not a valid number, enter a positive number. ";
+                    message2 = userName2 + ": That's not a valid number, enter a positive number. ";
                     continue;
                 } //catch
                 //check additional validity with if statements
                 if (numP2 < 0 || numP2 > 9) {
-                    message = userName2 + ": The number must be positive and under 10. Please try again. ";
+                    message2 = userName2 + ": The number must be positive and under 10. Please try again. ";
                     continue;
                 } // if
                 break;
@@ -476,8 +480,7 @@ public class secondHand {
         // display score for both player
         message = userName1 + "'s score is ";
         message2 = userName2 + "'s score is ";
-        JOptionPane.showMessageDialog(null, won);
-        JOptionPane.showMessageDialog(null, message + finalScore1 + " \45555555n" + message2 + finalScore2);
+        JOptionPane.showMessageDialog(null, won + "\n" + message + finalScore1 + " \n" + message2 + finalScore2);
 
     } // playerTwo
 
