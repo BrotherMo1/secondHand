@@ -60,20 +60,20 @@ public class secondHand {
             "Players: 1-2\r\n" +
             "\r\n" +
             "Objective\r\n" +
-            "Build a six-digit number with a higher digit sum than your opponent.\r\n" +
+            "Build a several-digit number with a higher digit sum than your opponent.\r\n" +
             "\r\n" +
             "How to Play:\r\n" +
             "• Player A declares a one-digit number.\r\n" +
             "• Player B subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r\n" +
             "• Then Player B submits a number, and Player A does the same.\r\n" +
             "• Player A then subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r\n" +
-            "• This process is then repeated until each player has a six-digit number. \r\n" +
+            "• This process is then repeated until each player has the right amount of number. \r\n" +
             "\r\n" +
             "Example:\r\n" +
             "• Player A calls 4. Player B has 9 → |9 - 4| = 5 → B’s display: 95\r\n" +
             "• Player B calls 9. Player A has 6 → |6 - 9| = 3 → A’s display: 63\r\n" +
-            "3. Continue alternating until both players have six-digit numbers.\r\n" +
-            "4. Scoring: Add the digits of each six-digit number. The player with the higher total wins.\r\n" +
+            "3. Continue alternating until both players have designated amount of numbers.\r\n" +
+            "4. Scoring: Add the digits of each digit. The player with the higher total wins.\r\n" +
             "\r\n" +
             "Example:\r\n" +
             "123456 → 1 + 2 + 3 + 4 + 5 + 6 = 21\r\n" +
@@ -108,9 +108,12 @@ public class secondHand {
         String message = "";
         String input = "";
         String output = "";
-
+        String userName = "";
+        
+  
         JOptionPane.showMessageDialog(null, "Single player selected \n You are going first");
-
+        
+        userName = JOptionPane.showInputDialog(null, "What is your name");
         // difficulty
         Object[] options = {
             "Easy",
@@ -133,7 +136,7 @@ public class secondHand {
         for (int i = 1; i < result1.length; i++) {
 
             // player input
-            message = "Player: please select your positive single digit number";
+            message = userName + "  please select your positive single digit number";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -292,7 +295,7 @@ public class secondHand {
             finalScoreCom += resultCom[f];
         } // for
 
-        JOptionPane.showMessageDialog(null, "Your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
+        JOptionPane.showMessageDialog(null, userName + "your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
     } // onePlayer
 
 
@@ -304,26 +307,29 @@ public class secondHand {
         int userTwo = 0;
         int numP1 = 0;
         int numP2 = 0;
-        int[] result1 = new int[5];
-        int[] result2 = new int[5];
+        int[] result1 = new int[6];
+        int[] result2 = new int[6];
         int finalScore1 = 0;
         int finalScore2 = 0;
         String won;
+        String userName1 = "";
+        String userName2 = "";
         String message = "Player One: select your positive single digit number";
         String message2 = "Player Two: select your positive single digit number";
         String output = "";
 
         // gamemode message
         JOptionPane.showMessageDialog(null, "Two player selected");
-
+        userName1 = JOptionPane.showInputDialog(null, "What is your name, player one");
+        userName2 = JOptionPane.showInputDialog(null, "What is your name, player two");
         // game loop
         for (int f = 0; f < 5; f++) {
             userOne = 0;
             userTwo = 0;
             numP1 = 0;
             numP2 = 0;
-            message = "Player One: select your positive single digit number";
-            message2 = "Player Two: select your positive single digit number";
+            message = userName1 + ": select your positive single digit number";
+            message2 = userName2 + ": select your positive single digit number";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -344,8 +350,8 @@ public class secondHand {
                 break;
             } while (true);
 
-            message = "Player One: select your positive single digit number";
-            message2 = "Player Two: select your positive single digit number";
+            message = userName1 + ": select your positive single digit number";
+            message2 = userName2 + ": select your positive single digit number";
             do {
                 input = JOptionPane.showInputDialog(null, message2);
                 if (input == null) {
@@ -365,8 +371,8 @@ public class secondHand {
                 } // if
                 break;
             } while (true);
-            JOptionPane.showMessageDialog(null, "Player One, your number is " + numP1);
-            JOptionPane.showMessageDialog(null, "Player Two, your number is " + numP2);
+            JOptionPane.showMessageDialog(null, userName1 + ", your number is " + numP1);
+            JOptionPane.showMessageDialog(null, userName2 + ", your number is " + numP2);
 
             userTwo = numP1 - numP2;
             if (userTwo < 0) {
@@ -384,12 +390,12 @@ public class secondHand {
                 } // if
 
             } // for
-            JOptionPane.showMessageDialog(null, "Player Two, your result is: " + output);
+            JOptionPane.showMessageDialog(null, userName2 + ", your result is: " + output);
 
 
 
 
-            message = "Player One: select your positive single digit number";
+            message = userName1 + ": select your positive single digit number";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -399,19 +405,19 @@ public class secondHand {
                     numP1 = Integer.parseInt(input);
                 } //try
                 catch (Exception e) {
-                    message = "Player One: That's not a valid number. Please enter a positive number. ";
+                    message = userName1 + ": That's not a valid number. Please enter a positive number. ";
                     continue;
                 } //catch
                 //check additional validity with if statements
                 if (numP1 < 0 || numP1 > 9) {
-                    message = "Player One: The number must be positive and under 10. Please try again. ";
+                    message = userName1 + ": The number must be positive and under 10. Please try again. ";
                     continue;
                 } // if
                 break;
             } while (true);
 
 
-            message = "Player Two: select your positive single digit number";
+            message = userName2 + ": select your positive single digit number";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -421,18 +427,18 @@ public class secondHand {
                     numP2 = Integer.parseInt(input);
                 } //try
                 catch (Exception e) {
-                    message = "Player Two: That's not a valid number, enter a positive number. ";
+                    message = userName2 + ": That's not a valid number, enter a positive number. ";
                     continue;
                 } //catch
                 //check additional validity with if statements
                 if (numP2 < 0 || numP2 > 9) {
-                    message = "Player Two: The number must be positive and under 10. Please try again. ";
+                    message = userName2 + ": The number must be positive and under 10. Please try again. ";
                     continue;
                 } // if
                 break;
             } while (true);
-            JOptionPane.showMessageDialog(null, "Player One, your number is " + numP1);
-            JOptionPane.showMessageDialog(null, "Player Two, your number is " + numP2);
+            JOptionPane.showMessageDialog(null, userName1 + ", your number is " + numP1);
+            JOptionPane.showMessageDialog(null, userName2 + ", your number is " + numP2);
 
             userOne = numP2 - numP1;
             if (userOne < 0) {
@@ -449,7 +455,7 @@ public class secondHand {
                 }
 
             }
-            JOptionPane.showMessageDialog(null, "Player One, your result is: " + output);
+            JOptionPane.showMessageDialog(null, userName1 + ", your result is: " + output);
 
             // calculate the whole score for both players
             for (int i = 0; i < result1.length; i++) {
@@ -461,17 +467,17 @@ public class secondHand {
 
         // determine who won the game
         if (finalScore1 > finalScore2) {
-            won = "Player One won!";
+            won = userName1 + " won!";
         } else {
-            won = "Player Two won!";
+            won = userName2 + " won!";
         } // else
 
 
         // display score for both player
-        message = "Player One's score is ";
-        message2 = "Player Two's score is ";
+        message = userName1 + "'s score is ";
+        message2 = userName2 + "'s score is ";
         JOptionPane.showMessageDialog(null, won);
-        JOptionPane.showMessageDialog(null, message + finalScore1 + " " + message2 + finalScore2);
+        JOptionPane.showMessageDialog(null, message + finalScore1 + " \45555555n" + message2 + finalScore2);
 
     } // playerTwo
 
