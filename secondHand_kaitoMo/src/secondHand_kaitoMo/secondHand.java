@@ -102,7 +102,8 @@ public class secondHand {
         int finalScoreCom = 0;
         int finalScoreP = 0;
         int turn = 0;
-        int[] result1 = new int[(int)(Math.random() * 7) + 7];
+        int turnCount = (int)(Math.random() * 7) + 7;
+        int[] result1 = new int[turnCount - (turnCount % 2) + 1];
         int[] resultCom = new int[result1.length];
         System.out.println(result1.length);
         String message = "";
