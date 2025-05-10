@@ -104,14 +104,14 @@ public class secondHand {
         int turn = 0;
         int[] result1 = new int[(int)(Math.random() * 7) + 7];
         int[] resultCom = new int[result1.length];
-        System.out.println(result1.length);
         String message = "";
+        String won = "";
         String input = "";
         String output = "";
         String userName = "";
         
   
-        JOptionPane.showMessageDialog(null, "Single player selected \n You are going first");
+        JOptionPane.showMessageDialog(null, "Single player selected \nYou are going first");
         
         userName = JOptionPane.showInputDialog(null, "What is your name");
         // difficulty
@@ -136,7 +136,7 @@ public class secondHand {
         for (int i = 1; i < result1.length; i++) {
 
             // player input
-            message = userName + " please select your positive single digit number \n to be subtracted against the bot's number to receive your point";
+            message = userName + " please select your positive single digit number \nto be subtracted against the bot's number to receive your point";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -261,7 +261,7 @@ public class secondHand {
 
                 } // for
 
-                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\n" + userName + " you chose: " + numP + "\nYour number is: " + output);
+                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\n" + userName + " you chose: " + numP + "\nThe bot's number is: " + output);
             } // if
 
             // if turn odd then it's the bot's turn to score points
@@ -292,8 +292,15 @@ public class secondHand {
             finalScoreP += result1[f];
             finalScoreCom += resultCom[f];
         } // for
-
-        JOptionPane.showMessageDialog(null, userName + "your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
+        
+        // provide winning message
+        if (finalScoreP > finalScoreCom) {
+        	won = userName + " won! ";
+        } else {
+        	won = "The bot won!";
+        } // else
+        
+        JOptionPane.showMessageDialog(null, won + "\n" + userName + ", your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
     } // onePlayer
 
 
