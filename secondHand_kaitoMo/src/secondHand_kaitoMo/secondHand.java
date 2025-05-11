@@ -55,7 +55,7 @@ public class secondHand {
 
     public static void instructions() {
 
-        String instructions = "Second Hand\r\n" +
+        String instructions = "<b>" + "Second Hand </b> \r\n" +
             "\r\n" +
             "Players: 1-2\r\n" +
             "\r\n" +
