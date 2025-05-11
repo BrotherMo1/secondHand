@@ -2,6 +2,7 @@
 package secondHand_kaitoMo;
 
 import java.io.BufferedReader;
+import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.InputStream;
@@ -9,13 +10,19 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 import javax.swing.JOptionPane;
-
+import javax.swing.UIManager;
+import java.awt.*;
+import java.awt.Color;
 import java.io.*;
 
 public class secondHand {
 
     public static void main(String[] args) {
-
+    	
+   	 UIManager UI = new UIManager();
+   	 UIManager.put("OptionPane.background", Color.white);
+   	 UIManager.put("Panel.background", Color.white);
+     
         do {
             int choice = mainMenu();
 
@@ -40,52 +47,71 @@ public class secondHand {
 
     public static int mainMenu() {
         int choice = 0;
-
+        String menu = "";
+        
+        // prepare menu for HTML
+        JEditorPane outputScreen = new JEditorPane();
+    	outputScreen.setContentType("text/html");
+    	outputScreen.setEditable(false);
+    	outputScreen.setText(menu);
+        menu = "<h3>Second Hand Main Menu</h3>choose an option:";
+     	outputScreen.setText(menu);
         Object[] options = {
             "Instructions",
             "1P",
             "2P",
             "Quit"
         };
-        choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Second Hand Main Menu",
+        choice = JOptionPane.showOptionDialog(null, outputScreen, "Choose something...",
             JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
             null, options, options[0]);
         return choice;
     } // mainMenu
 
     public static void instructions() {
+      	   
+    	String instructions = "";
+    	
+    	// prepare instructions for use of HTML
+    	JEditorPane outputScreen = new JEditorPane();
+    	outputScreen.setContentType("text/html");
+    	outputScreen.setEditable(false);
+    	outputScreen.setText(instructions);
 
-        String instructions = "<b>" + "Second Hand </b> \r\n" +
-            "\r\n" +
-            "Players: 1-2\r\n" +
-            "\r\n" +
-            "Objective\r\n" +
-            "Build a several-digit number with a higher digit sum than your opponent.\r\n" +
-            "\r\n" +
-            "How to Play:\r\n" +
-            "• Player A declares a one-digit number.\r\n" +
-            "• Player B subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r\n" +
-            "• Then Player B submits a number, and Player A does the same.\r\n" +
-            "• Player A then subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r\n" +
-            "• This process is then repeated until each player has the right amount of number. \r\n" +
-            "\r\n" +
-            "Example:\r\n" +
-            "• Player A calls 4. Player B has 9 → |9 - 4| = 5 → B’s display: 95\r\n" +
-            "• Player B calls 9. Player A has 6 → |6 - 9| = 3 → A’s display: 63\r\n" +
-            "3. Continue alternating until both players have designated amount of numbers.\r\n" +
-            "4. Scoring: Add the digits of each digit. The player with the higher total wins.\r\n" +
-            "\r\n" +
-            "Example:\r\n" +
-            "123456 → 1 + 2 + 3 + 4 + 5 + 6 = 21\r\n" +
-            "Winning the Game\r\n" +
-            "• Highest digit sum wins the game.\r\n" +
-            "\r\n" +
-            "Strategy Tips\r\n" +
-            "• Watch your opponent’s pattern and try to disrupt it.\r\n" +
-            "• Choose numbers that either maximize your own total or minimize the opponent’s next move.\r\n" +
-            "\r\n" +
-            "";
-        JOptionPane.showMessageDialog(null, instructions);
+        instructions = 
+        	"<div style=\"background-color:;border-radius:20px;font-family:verdana\""
+        	+ "<h1><b>Second Hand</b></h1>\r" +
+            "\r\n" + 
+            "<h2>Players: 1-2</h2>\r" +
+            "\r" +
+            "<h3>Objective</h3>\r" +
+            "Build a several-digit number with a higher digit sum than your opponent.\r<br>" +
+            "\r<br>" +
+            "<h3>How to Play:</h3>\r" +
+            "• Player A declares a one-digit number.\r<br>" +
+            "• Player B subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r<br>" +
+            "• Then Player B submits a number, and Player A does the same.\r<br>" +
+            "• Player A then subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r<br>" +
+            "• This process is then repeated until each player has the right amount of number. \r<br>" +
+            "\r<br>" +
+            "<h3>Example:</h3>\r" +
+            "• Player A calls 4. Player B has 9 → |9 - 4| = 5 → B’s display: 95\r<br>" +
+            "• Player B calls 9. Player A has 6 → |6 - 9| = 3 → A’s display: 63\r<br>" +
+            "3. Continue alternating until both players have designated amount of numbers.\r<br>" +
+            "4. Scoring: Add the digits of each digit. The player with the higher total wins.\r<br>" +
+            "\r<br>" +
+            "<h3>Example:</h3>\r" +
+            "123456 → 1 + 2 + 3 + 4 + 5 + 6 = 21\r<br>" +
+            "Winning the Game\r<br>" +
+            "• Highest digit sum wins the game.\r<br>" +
+            "\r<br>" +
+            "<h3>Strategy Tips</h3>\r" +
+            "• Watch your opponent’s pattern and try to disrupt it.\r<br>" +
+            "• Choose numbers that either maximize your own total or minimize the opponent’s next move.\r<br>" +
+            "\r<br>" +
+            "</div>";
+        outputScreen.setText(instructions);
+        JOptionPane.showMessageDialog(null, outputScreen);
 
     } // instructions
 
