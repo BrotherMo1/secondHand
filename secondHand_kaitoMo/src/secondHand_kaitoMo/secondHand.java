@@ -129,24 +129,29 @@ public class secondHand {
         int finalScoreP = 0;
         int turn = 0;
         int[] result1 = new int[(int)(Math.random() * 7) + 7];
-        int[] resultCom = new int[result1.length];
+        int [] resultCom;
         String message = "";
         String won = "";
         String input = "";
         String output = "";
         String userName = "";
         
-     // prepare instructions for use of HTML
-//    	JEditorPane outputScreen = new JEditorPane();
-//    	outputScreen.setContentType("text/html");
-//    	outputScreen.setEditable(false);
-//    	outputScreen.setText(message);
-//    	
-//        outputScreen.setText(message);
-//        JOptionPane.showMessageDialog(null, outputScreen);
-        JOptionPane.showMessageDialog(null, "Single player selected\nYou are going first");
+        // make sure result1 has an odd length
+        if (result1.length % 2 == 0) {
+        	result1 = new int [result1.length + 1];
+        }
+        resultCom = new int [result1.length];
         
-        userName = JOptionPane.showInputDialog(null, "What is your name");
+    	// prepare instructions for use of HTML
+    	JEditorPane outputScreen = new JEditorPane();
+    	outputScreen.setContentType("text/html");
+    	outputScreen.setEditable(false);
+    	outputScreen.setText(message);
+        message = "<div style=\"color:#0000;font-family:verdana;font-size:1px\""
+        		+ "What is your name?</div>";
+        outputScreen.setText(message);
+        userName = JOptionPane.showInputDialog(null, outputScreen);
+        
         // difficulty
         Object[] options = {
             "Easy",
@@ -163,13 +168,18 @@ public class secondHand {
             System.exit(0);
         } // if 
         
-        // turns message
-        JOptionPane.showMessageDialog(null, "There will be " + (result1.length - 1) + " turns");
+        // turns message       
+        message = "There will be " + (result1.length - 1) + " turns";
+        outputScreen.setText(message);
+        JOptionPane.showMessageDialog(null, outputScreen);
         
         for (int i = 1; i < result1.length; i++) {
 
             // player input
-            message = userName + " please select your positive single digit number \nto be subtracted against the bot's number to receive your point";
+            outputScreen.setText(message);
+            userName = JOptionPane.showInputDialog(null, outputScreen);
+            message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\""
+            		+ userName + "please select your positive single digit number \\nto be subtracted against the bot's number to receive your point</div>";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -178,13 +188,15 @@ public class secondHand {
                 try {
                     numP = Integer.parseInt(input);
                 } //try
-                catch (Exception e) {
-                    message = "That's not a valid number, please enter a positive number. ";
+                catch (Exception e) {               	 	
+                    message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\""
+                    		+ "That's not a valid number, please enter a positive number. </div>";
                     continue;
                 } //catch
                 //check additional validity with if statements
-                if (numP < 0 || numP > 9) {
-                    message = userName + "your number must be positive and under 10. Please try again. ";
+                if (numP < 0 || numP > 9) {                	
+                    message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\""
+                    		+ userName + "your number must be positive and under 10. Please try again. </div>";
                     continue;
                 } // if
                 break;
