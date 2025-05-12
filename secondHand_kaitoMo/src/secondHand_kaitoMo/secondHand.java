@@ -136,8 +136,15 @@ public class secondHand {
         String output = "";
         String userName = "";
         
-  
-        JOptionPane.showMessageDialog(null, "Single player selected \nYou are going first");
+     // prepare instructions for use of HTML
+//    	JEditorPane outputScreen = new JEditorPane();
+//    	outputScreen.setContentType("text/html");
+//    	outputScreen.setEditable(false);
+//    	outputScreen.setText(message);
+//    	
+//        outputScreen.setText(message);
+//        JOptionPane.showMessageDialog(null, outputScreen);
+        JOptionPane.showMessageDialog(null, "Single player selected\nYou are going first");
         
         userName = JOptionPane.showInputDialog(null, "What is your name");
         // difficulty
@@ -327,6 +334,7 @@ public class secondHand {
         } // else
         
         JOptionPane.showMessageDialog(null, won + "\n" + userName + ", your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
+        
     } // onePlayer
 
 
@@ -342,6 +350,7 @@ public class secondHand {
         int[] result2 = new int[6];
         int finalScore1 = 0;
         int finalScore2 = 0;
+        int turn = 0;
         String won;
         String userName1 = "";
         String userName2 = "";
@@ -360,15 +369,13 @@ public class secondHand {
             numP1 = 0;
             numP2 = 0;
             
-           if (f % 2 == 0) {
-               message = userName1 + ": select your positive single digit number \n to be subtracted against " + userName2 + " to receive your point";
-               message2 = userName2 + ": select your positive single digit number \n to stop " + userName1 + " from getting a good score";
-           } // if
-           
-           if (f % 2 == 1) {
+           if (turn % 2 == 0) {
                message = userName1 + ": select your positive single digit number \n to stop " + userName2 + " from getting a good score";
                message2 = userName2 + ": select your positive single digit number \n to be subtracted against " + userName1 + " to receive your point";
-           } // if
+           } else {
+               message = userName1 + ": select your positive single digit number \n to be subtracted against " + userName2 + " to receive your point";
+               message2 = userName2 + ": select your positive single digit number \n to stop " + userName1 + " from getting a good score";
+           } // else if
 
             do {
                 input = JOptionPane.showInputDialog(null, message);
@@ -499,7 +506,9 @@ public class secondHand {
                 finalScore1 += result1[i];
                 finalScore2 += result2[i];
             } // for
-
+            if (f % 2 == 0) {
+                turn++;
+            }
         } // for
 
         // determine who won the game
