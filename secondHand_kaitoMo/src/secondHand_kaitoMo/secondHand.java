@@ -15,7 +15,10 @@ import java.io.*;
 public class secondHand {
 
     public static void main(String[] args) {
-
+    	int cash = 100000;
+    	int savings = 600000;
+    	String car = "A car - $40,000";
+    	String house = "A house - $450,000";
         do {
             int choice = mainMenu();
 
@@ -35,7 +38,7 @@ public class secondHand {
                 System.exit(0);
             } // if
             if (choice == 4) {
-            	possesions();
+            	possesions(cash, savings, car, house);
             }
         } while (true);
 
@@ -489,12 +492,8 @@ public class secondHand {
 
     } // playerTwo
     
-    public static int possesions() {
-    	int cash = 100000;
-    	int savings = 600000;
+    public static int possesions(int cash, int savings, String car, String house) {
     	int choice = 0;
-    	String car = "A car - $40,000";
-    	String house = "A house - $450,000";
     	Object[] options = {
                 "House",
                 "Car",
@@ -510,6 +509,18 @@ public class secondHand {
     	case 0:
     		cash += 400000;
     		JOptionPane.showMessageDialog(null, "Congratulations! You attempted to sell your house \nand had the price negotioated down to $400,000\nYou now have: $" + cash);
+    		break;
+    	case 1:
+    		cash += 40000;
+    		JOptionPane.showMessageDialog(null, "Congratulations! You sold your car!\nYou now have: $" + cash);
+    		break;
+    	case 2:
+    		cash += 600000;
+    		JOptionPane.showMessageDialog(null, "Congratulations! You took out your life savings!\nYou now have: $" + cash);
+    		break;
+    	case 3:
+    	case -1:
+    		break;
     	}
     	return cash;
     }
