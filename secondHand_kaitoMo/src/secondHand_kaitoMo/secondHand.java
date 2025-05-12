@@ -147,7 +147,7 @@ public class secondHand {
     	outputScreen.setContentType("text/html");
     	outputScreen.setEditable(false);
     	outputScreen.setText(message);
-        message = "<div style=\"color:#0000;font-family:verdana;font-size:1px\""
+        message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
         		+ "What is your name?</div>";
         outputScreen.setText(message);
         userName = JOptionPane.showInputDialog(null, outputScreen);
@@ -168,20 +168,21 @@ public class secondHand {
             System.exit(0);
         } // if 
         
-        // turns message       
-        message = "There will be " + (result1.length - 1) + " turns";
+        
+        // turns message   		
+        message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
+        		+ "There will be " + (result1.length - 1) + " turns</div>";
         outputScreen.setText(message);
         JOptionPane.showMessageDialog(null, outputScreen);
         
         for (int i = 1; i < result1.length; i++) {
 
             // player input
-            outputScreen.setText(message);
-            userName = JOptionPane.showInputDialog(null, outputScreen);
-            message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\""
-            		+ userName + "please select your positive single digit number \\nto be subtracted against the bot's number to receive your point</div>";
+            message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
+            		+ userName + " please select your positive single digit number <br> to be subtracted against the bot's number to receive your point</div>";
             do {
-                input = JOptionPane.showInputDialog(null, message);
+                outputScreen.setText(message);
+                input = JOptionPane.showInputDialog(null, outputScreen);
                 if (input == null) {
                     System.exit(0);
                 } // if
@@ -189,13 +190,13 @@ public class secondHand {
                     numP = Integer.parseInt(input);
                 } //try
                 catch (Exception e) {               	 	
-                    message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\""
+                    message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
                     		+ "That's not a valid number, please enter a positive number. </div>";
                     continue;
                 } //catch
                 //check additional validity with if statements
                 if (numP < 0 || numP > 9) {                	
-                    message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\""
+                    message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
                     		+ userName + "your number must be positive and under 10. Please try again. </div>";
                     continue;
                 } // if
@@ -305,8 +306,13 @@ public class secondHand {
                     } // if
 
                 } // for
-
-                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\n" + userName + " you chose: " + numP + "\nThe bot's number is: " + output);
+                
+                
+                message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
+                		+ "The Bot chose: " + com + "<br>" + userName + " you chose: " + numP + "<br>The bot's number is: " + output + "</div>";
+                outputScreen.setText(message);
+                JOptionPane.showMessageDialog(null, outputScreen);
+                
             } // if
 
             // if turn odd then it's the bot's turn to score points
@@ -325,7 +331,11 @@ public class secondHand {
 
                 } // for
 
-                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\n" + userName + " you chose: " + numP + "\nYour number is: " + output);
+                
+                message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
+                		+ "The Bot chose: " + com + "<br>" + userName + " you chose: " + numP + "<br>The bot's number is: " + output + "</div>";
+                outputScreen.setText(message);
+                JOptionPane.showMessageDialog(null, outputScreen);
             } // else
 
             turn++;
@@ -345,8 +355,11 @@ public class secondHand {
         	won = "The bot won!";
         } // else
         
-        JOptionPane.showMessageDialog(null, won + "\n" + userName + ", your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
         
+        message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
+        		+ won + "<br>" + userName + ", your final score is : " + finalScoreP + "<br>The bot's final score is: " + finalScoreCom + "</div>";
+        outputScreen.setText(message);
+        JOptionPane.showMessageDialog(null, outputScreen);8    
     } // onePlayer
 
 
