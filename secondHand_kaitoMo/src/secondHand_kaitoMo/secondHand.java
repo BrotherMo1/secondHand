@@ -359,7 +359,7 @@ public class secondHand {
         message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
         		+ won + "<br>" + userName + ", your final score is : " + finalScoreP + "<br>The bot's final score is: " + finalScoreCom + "</div>";
         outputScreen.setText(message);
-        JOptionPane.showMessageDialog(null, outputScreen);8    
+        JOptionPane.showMessageDialog(null, outputScreen);  
     } // onePlayer
 
 
@@ -379,8 +379,11 @@ public class secondHand {
         String won;
         String userName1 = "";
         String userName2 = "";
-        String message = "Player One: select your positive single digit number";
-        String message2 = "Player Two: select your positive single digit number";
+
+        String message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
+        		+ "Player One: select your positive single digit number</div>";
+        String message2 = "<div style=\"color:#000;font-family:verdana;font-size:10px"
+        		+ "Player Two: select your positive single digit number</div>";
         String output = "";
 
         // gamemode message
