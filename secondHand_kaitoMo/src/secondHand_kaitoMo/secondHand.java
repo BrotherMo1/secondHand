@@ -1,7 +1,7 @@
-
 package secondHand_kaitoMo;
 
 import java.io.BufferedReader;
+import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.InputStream;
@@ -9,16 +9,19 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 import javax.swing.JOptionPane;
-
+import javax.swing.UIManager;
+import java.awt.*;
+import java.awt.Color;
 import java.io.*;
 
 public class secondHand {
 
     public static void main(String[] args) {
-    	int cash = 100000;
-    	int savings = 600000;
-    	String car = "A car - $40,000";
-    	String house = "A house - $450,000";
+    	
+   	 UIManager UI = new UIManager();
+   	 UIManager.put("OptionPane.background", Color.white);
+   	 UIManager.put("Panel.background", Color.white);
+     
         do {
             int choice = mainMenu();
 
@@ -37,62 +40,77 @@ public class secondHand {
             if (choice == 3 || choice == -1) {
                 System.exit(0);
             } // if
-            if (choice == 4) {
-            	possesions(cash, savings, car, house);
-            }
         } while (true);
 
     } // main
 
     public static int mainMenu() {
         int choice = 0;
-
+        String menu = "";
+        
+        // prepare menu for HTML
+        JEditorPane outputScreen = new JEditorPane();
+    	outputScreen.setContentType("text/html");
+    	outputScreen.setEditable(false);
+    	outputScreen.setText(menu);
+        menu = "<h3>Second Hand Main Menu</h3>choose an option:";
+     	outputScreen.setText(menu);
         Object[] options = {
             "Instructions",
             "1P",
             "2P",
-            "Quit",
-            "Posessions"
+            "Quit"
         };
-        choice = JOptionPane.showOptionDialog(null, "Choose One Option: ", "Second Hand Main Menu",
+        choice = JOptionPane.showOptionDialog(null, outputScreen, "Choose something...",
             JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
             null, options, options[0]);
         return choice;
     } // mainMenu
 
     public static void instructions() {
+      	   
+    	String instructions = "";
+    	
+    	// prepare instructions for use of HTML
+    	JEditorPane outputScreen = new JEditorPane();
+    	outputScreen.setContentType("text/html");
+    	outputScreen.setEditable(false);
+    	outputScreen.setText(instructions);
 
-        String instructions = "Second Hand\r\n" +
-            "\r\n" +
-            "Players: 1-2\r\n" +
-            "\r\n" +
-            "Objective\r\n" +
-            "Build a several-digit number with a higher digit sum than your opponent.\r\n" +
-            "\r\n" +
-            "How to Play:\r\n" +
-            "• Player A declares a one-digit number.\r\n" +
-            "• Player B subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r\n" +
-            "• Then Player B submits a number, and Player A does the same.\r\n" +
-            "• Player A then subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r\n" +
-            "• This process is then repeated until each player has the right amount of number. \r\n" +
-            "\r\n" +
-            "Example:\r\n" +
-            "• Player A calls 4. Player B has 9 → |9 - 4| = 5 → B’s display: 95\r\n" +
-            "• Player B calls 9. Player A has 6 → |6 - 9| = 3 → A’s display: 63\r\n" +
-            "3. Continue alternating until both players have designated amount of numbers.\r\n" +
-            "4. Scoring: Add the digits of each digit. The player with the higher total wins.\r\n" +
-            "\r\n" +
-            "Example:\r\n" +
-            "123456 → 1 + 2 + 3 + 4 + 5 + 6 = 21\r\n" +
-            "Winning the Game\r\n" +
-            "• Highest digit sum wins the game.\r\n" +
-            "\r\n" +
-            "Strategy Tips\r\n" +
-            "• Watch your opponent’s pattern and try to disrupt it.\r\n" +
-            "• Choose numbers that either maximize your own total or minimize the opponent’s next move.\r\n" +
-            "\r\n" +
-            "";
-        JOptionPane.showMessageDialog(null, instructions);
+        instructions = 
+        	"<div style=\"background-color:;border-radius:20px;font-family:verdana\""
+        	+ "<h1><b>Second Hand</b></h1>\r" +
+            "\r\n" + 
+            "<h2>Players: 1-2</h2>\r" +
+            "\r" +
+            "<h3>Objective</h3>\r" +
+            "Build a several-digit number with a higher digit sum than your opponent.\r<br>" +
+            "\r<br>" +
+            "<h3>How to Play:</h3>\r" +
+            "• Player A declares a one-digit number.\r<br>" +
+            "• Player B subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r<br>" +
+            "• Then Player B submits a number, and Player A does the same.\r<br>" +
+            "• Player A then subtracts that number from the last digit on their calculator, takes the absolute value, and appends the result.\r<br>" +
+            "• This process is then repeated until each player has the right amount of number. \r<br>" +
+            "\r<br>" +
+            "<h3>Example:</h3>\r" +
+            "• Player A calls 4. Player B has 9 → |9 - 4| = 5 → B’s display: 95\r<br>" +
+            "• Player B calls 9. Player A has 6 → |6 - 9| = 3 → A’s display: 63\r<br>" +
+            "3. Continue alternating until both players have designated amount of numbers.\r<br>" +
+            "4. Scoring: Add the digits of each digit. The player with the higher total wins.\r<br>" +
+            "\r<br>" +
+            "<h3>Example:</h3>\r" +
+            "123456 → 1 + 2 + 3 + 4 + 5 + 6 = 21\r<br>" +
+            "Winning the Game\r<br>" +
+            "• Highest digit sum wins the game.\r<br>" +
+            "\r<br>" +
+            "<h3>Strategy Tips</h3>\r" +
+            "• Watch your opponent’s pattern and try to disrupt it.\r<br>" +
+            "• Choose numbers that either maximize your own total or minimize the opponent’s next move.\r<br>" +
+            "\r<br>" +
+            "</div>";
+        outputScreen.setText(instructions);
+        JOptionPane.showMessageDialog(null, outputScreen);
 
     } // instructions
 
@@ -109,20 +127,25 @@ public class secondHand {
         int finalScoreCom = 0;
         int finalScoreP = 0;
         int turn = 0;
-        int turnCount = (int)(Math.random() * 7) + 7;
-        int[] result1 = new int[turnCount - (turnCount % 2) + 1];
+        int[] result1 = new int[(int)(Math.random() * 7) + 7];
         int[] resultCom = new int[result1.length];
-        System.out.println(result1.length);
         String message = "";
+        String won = "";
         String input = "";
         String output = "";
         String userName = "";
         
-  
-        JOptionPane.showMessageDialog(null, "Single player selected \n You are going first");
+     // prepare instructions for use of HTML
+//    	JEditorPane outputScreen = new JEditorPane();
+//    	outputScreen.setContentType("text/html");
+//    	outputScreen.setEditable(false);
+//    	outputScreen.setText(message);
+//    	
+//        outputScreen.setText(message);
+//        JOptionPane.showMessageDialog(null, outputScreen);
+        JOptionPane.showMessageDialog(null, "Single player selected\nYou are going first");
         
         userName = JOptionPane.showInputDialog(null, "What is your name");
-        userName = userName.trim();
         // difficulty
         Object[] options = {
             "Easy",
@@ -145,7 +168,7 @@ public class secondHand {
         for (int i = 1; i < result1.length; i++) {
 
             // player input
-            message = userName + ", please select your positive single digit number";
+            message = userName + " please select your positive single digit number \nto be subtracted against the bot's number to receive your point";
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -160,7 +183,7 @@ public class secondHand {
                 } //catch
                 //check additional validity with if statements
                 if (numP < 0 || numP > 9) {
-                    message = "Your number must be positive and under 10. Please try again. ";
+                    message = userName + "your number must be positive and under 10. Please try again. ";
                     continue;
                 } // if
                 break;
@@ -247,8 +270,6 @@ public class secondHand {
             temp = Math.abs(temp);
             com = numP - temp;
             com = Math.abs(com);
-            System.out.println("com is " + com);
-            System.out.println("diff is " + Math.abs((numP - com)));
             if (turn == 0) {
 
                 resultCom[0] = com;
@@ -272,7 +293,7 @@ public class secondHand {
 
                 } // for
 
-                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\nYou chose: " + numP + "\nYour number is: " + output);
+                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\n" + userName + " you chose: " + numP + "\nThe bot's number is: " + output);
             } // if
 
             // if turn odd then it's the bot's turn to score points
@@ -291,7 +312,7 @@ public class secondHand {
 
                 } // for
 
-                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\nYou chose: " + numP + "\nThe bot's score is: " + output);
+                JOptionPane.showMessageDialog(null, "The Bot chose: " + com + "\n" + userName + " you chose: " + numP + "\nYour number is: " + output);
             } // else
 
             turn++;
@@ -303,8 +324,16 @@ public class secondHand {
             finalScoreP += result1[f];
             finalScoreCom += resultCom[f];
         } // for
-
-        JOptionPane.showMessageDialog(null, userName + "your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
+        
+        // provide winning message
+        if (finalScoreP > finalScoreCom) {
+        	won = userName + " won! ";
+        } else {
+        	won = "The bot won!";
+        } // else
+        
+        JOptionPane.showMessageDialog(null, won + "\n" + userName + ", your final score is : " + finalScoreP + "\nThe bot's final score is: " + finalScoreCom);
+        
     } // onePlayer
 
 
@@ -320,6 +349,7 @@ public class secondHand {
         int[] result2 = new int[6];
         int finalScore1 = 0;
         int finalScore2 = 0;
+        int turn = 0;
         String won;
         String userName1 = "";
         String userName2 = "";
@@ -337,10 +367,15 @@ public class secondHand {
             userTwo = 0;
             numP1 = 0;
             numP2 = 0;
-            message = userName1 + ": select your positive single digit number";
-            message2 = userName2 + ": select your positive single digit number";
-            userName1 = userName1.trim();
-            userName2 = userName2.trim();
+            
+           if (turn % 2 == 0) {
+               message = userName1 + ": select your positive single digit number \n to stop " + userName2 + " from getting a good score";
+               message2 = userName2 + ": select your positive single digit number \n to be subtracted against " + userName1 + " to receive your point";
+           } else {
+               message = userName1 + ": select your positive single digit number \n to be subtracted against " + userName2 + " to receive your point";
+               message2 = userName2 + ": select your positive single digit number \n to stop " + userName1 + " from getting a good score";
+           } // else if
+
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -361,8 +396,7 @@ public class secondHand {
                 break;
             } while (true);
 
-            message = userName1 + ": select your positive single digit number";
-            message2 = userName2 + ": select your positive single digit number";
+
             do {
                 input = JOptionPane.showInputDialog(null, message2);
                 if (input == null) {
@@ -403,10 +437,8 @@ public class secondHand {
             } // for
             JOptionPane.showMessageDialog(null, userName2 + ", your result is: " + output);
 
-
-
-
-            message = userName1 + ": select your positive single digit number";
+            message = userName1 + ": select your positive single digit number \n to be subtracted against " + userName2 + " to receive your point";
+            
             do {
                 input = JOptionPane.showInputDialog(null, message);
                 if (input == null) {
@@ -427,10 +459,10 @@ public class secondHand {
                 break;
             } while (true);
 
-            
-            message = userName2 + ", please select your positive single digit number";
+
+            message2 = userName2 + ": select your positive single digit number \nto stop " + userName1 + " from getting a good score";
             do {
-                input = JOptionPane.showInputDialog(null, message);
+                input = JOptionPane.showInputDialog(null, message2);
                 if (input == null) {
                     System.exit(0);
                 } // if
@@ -438,12 +470,12 @@ public class secondHand {
                     numP2 = Integer.parseInt(input);
                 } //try
                 catch (Exception e) {
-                    message = userName2 + ": That's not a valid number, enter a positive number. ";
+                    message2 = userName2 + ": That's not a valid number, enter a positive number. ";
                     continue;
                 } //catch
                 //check additional validity with if statements
                 if (numP2 < 0 || numP2 > 9) {
-                    message = userName2 + ": The number must be positive and under 10. Please try again. ";
+                    message2 = userName2 + ": The number must be positive and under 10. Please try again. ";
                     continue;
                 } // if
                 break;
@@ -473,7 +505,9 @@ public class secondHand {
                 finalScore1 += result1[i];
                 finalScore2 += result2[i];
             } // for
-
+            if (f % 2 == 0) {
+                turn++;
+            }
         } // for
 
         // determine who won the game
@@ -487,42 +521,8 @@ public class secondHand {
         // display score for both player
         message = userName1 + "'s score is ";
         message2 = userName2 + "'s score is ";
-        JOptionPane.showMessageDialog(null, won);
-        JOptionPane.showMessageDialog(null, message + finalScore1 + " \45555555n" + message2 + finalScore2);
+        JOptionPane.showMessageDialog(null, won + "\n" + message + finalScore1 + " \n" + message2 + finalScore2);
 
     } // playerTwo
-    
-    public static int possesions(int cash, int savings, String car, String house) {
-    	int choice = 0;
-    	Object[] options = {
-                "House",
-                "Car",
-                "Life savings",
-                "Back"
-            };
-    	
-    	JOptionPane.showMessageDialog(null, "You currently own: \n" + house + "\n" + car + "\n" + "$" + cash + " dollars in cash" + "\n" + "$" + savings + " in your life savings");
-    	choice = JOptionPane.showOptionDialog(null, "Choose One of the Following to Sell/Take Out: ", "Market",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null, options, options[0]);
-    	switch (choice) {
-    	case 0:
-    		cash += 400000;
-    		JOptionPane.showMessageDialog(null, "Congratulations! You attempted to sell your house \nand had the price negotioated down to $400,000\nYou now have: $" + cash);
-    		break;
-    	case 1:
-    		cash += 40000;
-    		JOptionPane.showMessageDialog(null, "Congratulations! You sold your car!\nYou now have: $" + cash);
-    		break;
-    	case 2:
-    		cash += 600000;
-    		JOptionPane.showMessageDialog(null, "Congratulations! You took out your life savings!\nYou now have: $" + cash);
-    		break;
-    	case 3:
-    	case -1:
-    		break;
-    	}
-    	return cash;
-    }
-    
+
 } // class
