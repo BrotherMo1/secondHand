@@ -1,3 +1,4 @@
+
 package secondHand_kaitoMo;
 
 import java.io.BufferedReader;
