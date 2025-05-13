@@ -383,7 +383,6 @@ public class secondHand {
 
 
     public static void twoPlayer() {
-        // declare variables
         String input = "";
         int userOne = 0;
         int userTwo = 0;
@@ -394,182 +393,125 @@ public class secondHand {
         int finalScore1 = 0;
         int finalScore2 = 0;
         int turn = 0;
-        String won;
+        String won = "";
         String userName1 = "";
         String userName2 = "";
+        String msg1 = "";
+        String msg2 = "";
+        String summary = "";
 
-        String message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
-        		+ "Player One: select your positive single digit number</div>";
-        String message2 = "<div style=\"color:#000;font-family:verdana;font-size:10px"
-        		+ "Player Two: select your positive single digit number</div>";
-        String output = "";
+        JEditorPane outputScreen = new JEditorPane();
+        outputScreen.setContentType("text/html");
+        outputScreen.setEditable(false);
 
         // gamemode message
-        JOptionPane.showMessageDialog(null, "Two player selected");
-        userName1 = JOptionPane.showInputDialog(null, "What is your name, player one");
-        userName2 = JOptionPane.showInputDialog(null, "What is your name, player two");
-        // game loop
+        outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>Two player selected</div>");
+        JOptionPane.showMessageDialog(null, outputScreen);
+
+        // get player names
+        outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>What is your name, Player One?</div>");
+        userName1 = JOptionPane.showInputDialog(null, outputScreen);
+
+        outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>What is your name, Player Two?</div>");
+        userName2 = JOptionPane.showInputDialog(null, outputScreen);
+
         for (int f = 0; f < 5; f++) {
-            userOne = 0;
-            userTwo = 0;
             numP1 = 0;
             numP2 = 0;
-            
-           if (turn % 2 == 0) {
-               message = userName1 + ": select your positive single digit number \n to stop " + userName2 + " from getting a good score";
-               message2 = userName2 + ": select your positive single digit number \n to be subtracted against " + userName1 + " to receive your point";
-           } else {
-               message = userName1 + ": select your positive single digit number \n to be subtracted against " + userName2 + " to receive your point";
-               message2 = userName2 + ": select your positive single digit number \n to stop " + userName1 + " from getting a good score";
-           } // else if
 
+            if (turn % 2 == 0) {
+                msg1 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName1 + 
+                       ", select your number to stop " + userName2 + " from scoring.</div>";
+                msg2 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName2 + 
+                       ", select your number to be subtracted against " + userName1 + " to score.</div>";
+            } else {
+                msg1 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName1 + 
+                       ", select your number to be subtracted against " + userName2 + " to score.</div>";
+                msg2 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName2 + 
+                       ", select your number to stop " + userName1 + " from scoring.</div>";
+            }
+
+            // Player 1 input
             do {
-                input = JOptionPane.showInputDialog(null, message);
-                if (input == null) {
-                    System.exit(0);
-                } // if
+                outputScreen.setText(msg1);
+                input = JOptionPane.showInputDialog(null, outputScreen);
+                if (input == null) System.exit(0);
+
                 try {
                     numP1 = Integer.parseInt(input);
-                } //try
-                catch (Exception e) {
-                    message = "That's not a valid number, enter a positive number. ";
-                    continue;
-                } //catch
-                //check additional validity with if statements
-                if (numP1 < 0 || numP1 > 9) {
-                    message = "The number must be positive and under 10. Please try again. ";
-                    continue;
-                } // if
-                break;
-            } while (true);
-
-
-            do {
-                input = JOptionPane.showInputDialog(null, message2);
-                if (input == null) {
-                    System.exit(0);
-                } // if
-                try {
-                    numP2 = Integer.parseInt(input);
-                } //try
-                catch (Exception e) {
-                    message2 = "That's not a valid number, enter a positive number. ";
-                    continue;
-                } //catch
-                //check additional validity with if statements
-                if (numP2 < 0 || numP2 > 9) {
-                    message2 = "The number must be positive and under 10. Please try again. ";
-                    continue;
-                } // if
-                break;
-            } while (true);
-            JOptionPane.showMessageDialog(null, userName1 + ", your number is " + numP1);
-            JOptionPane.showMessageDialog(null, userName2 + ", your number is " + numP2);
-
-            userTwo = numP1 - numP2;
-            if (userTwo < 0) {
-                userTwo = Math.abs(userTwo);
-            } // if
-
-            if (f == 0) {
-                result2[0] = numP2;
-            } // if
-            result2[f + 1] = userTwo;
-            output = "";
-            for (int i = 0; i < result2.length; i++) {
-                if (result2[i] != 0) {
-                    output += (result2[i]);
-                } // if
-
-            } // for
-            JOptionPane.showMessageDialog(null, userName2 + ", your result is: " + output);
-
-            message = userName1 + ": select your positive single digit number \n to be subtracted against " + userName2 + " to receive your point";
-            
-            do {
-                input = JOptionPane.showInputDialog(null, message);
-                if (input == null) {
-                    System.exit(0);
-                } // if
-                try {
-                    numP1 = Integer.parseInt(input);
-                } //try
-                catch (Exception e) {
-                    message = userName1 + ": That's not a valid number. Please enter a positive number. ";
-                    continue;
-                } //catch
-                //check additional validity with if statements
-                if (numP1 < 0 || numP1 > 9) {
-                    message = userName1 + ": The number must be positive and under 10. Please try again. ";
-                    continue;
-                } // if
-                break;
-            } while (true);
-
-
-            message2 = userName2 + ": select your positive single digit number \nto stop " + userName1 + " from getting a good score";
-            do {
-                input = JOptionPane.showInputDialog(null, message2);
-                if (input == null) {
-                    System.exit(0);
-                } // if
-                try {
-                    numP2 = Integer.parseInt(input);
-                } //try
-                catch (Exception e) {
-                    message2 = userName2 + ": That's not a valid number, enter a positive number. ";
-                    continue;
-                } //catch
-                //check additional validity with if statements
-                if (numP2 < 0 || numP2 > 9) {
-                    message2 = userName2 + ": The number must be positive and under 10. Please try again. ";
-                    continue;
-                } // if
-                break;
-            } while (true);
-            JOptionPane.showMessageDialog(null, userName1 + ", your number is " + numP1);
-            JOptionPane.showMessageDialog(null, userName2 + ", your number is " + numP2);
-
-            userOne = numP2 - numP1;
-            if (userOne < 0) {
-                userOne = Math.abs(userOne);
-            } // if
-            if (f == 0) {
-                result1[0] = numP1;
-            } // if
-            result1[f + 1] = userOne;
-            output = "";
-            for (int i = 0; i < result1.length; i++) {
-                if (result1[i] != 0) {
-                    output += (result1[i]);
+                    if (numP1 < 0 || numP1 > 9) throw new NumberFormatException();
+                    break;
+                } catch (Exception e) {
+                    outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>Invalid input. Enter a digit from 0 to 9.</div>");
+                    JOptionPane.showMessageDialog(null, outputScreen);
                 }
+            } while (true);
 
+            // Player 2 input
+            do {
+                outputScreen.setText(msg2);
+                input = JOptionPane.showInputDialog(null, outputScreen);
+                if (input == null) System.exit(0);
+
+                try {
+                    numP2 = Integer.parseInt(input);
+                    if (numP2 < 0 || numP2 > 9) throw new NumberFormatException();
+                    break;
+                } catch (Exception e) {
+                    outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>Invalid input. Enter a digit from 0 to 9.</div>");
+                    JOptionPane.showMessageDialog(null, outputScreen);
+                }
+            } while (true);
+
+            // First scoring
+            userTwo = Math.abs(numP1 - numP2);
+            if (f == 0) result2[0] = numP2;
+            result2[f + 1] = userTwo;
+
+            String output = "";
+            for (int i = 0; i < result2.length; i++) {
+                if (result2[i] != 0) output += result2[i];
             }
-            JOptionPane.showMessageDialog(null, userName1 + ", your result is: " + output);
 
-            // calculate the whole score for both players
+            outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>" + userName2 + ", your result is: " + output + "</div>");
+            JOptionPane.showMessageDialog(null, outputScreen);
+
+            // Reverse roles for second scoring
+            int userOneScore = Math.abs(numP2 - numP1);
+            if (f == 0) result1[0] = numP1;
+            result1[f + 1] = userOneScore;
+
+            output = "";
             for (int i = 0; i < result1.length; i++) {
-                finalScore1 += result1[i];
-                finalScore2 += result2[i];
-            } // for
-            if (f % 2 == 0) {
-                turn++;
+                if (result1[i] != 0) output += result1[i];
             }
-        } // for
 
-        // determine who won the game
+            outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>" + userName1 + ", your result is: " + output + "</div>");
+            JOptionPane.showMessageDialog(null, outputScreen);
+
+            turn++;
+        }
+
+        // Calculate scores
+        for (int i = 0; i < result1.length; i++) {
+            finalScore1 += result1[i];
+            finalScore2 += result2[i];
+        }
+
         if (finalScore1 > finalScore2) {
-            won = userName1 + " won!";
+            won = userName1 + " wins!";
+        } else if (finalScore2 > finalScore1) {
+            won = userName2 + " wins!";
         } else {
-            won = userName2 + " won!";
-        } // else
+            won = "It's a tie!";
+        }
 
+        summary = "<div style='color:#000;font-family:verdana;font-size:10px'>" +
+                         won + "<br>" + userName1 + "'s score: " + finalScore1 + 
+                         "<br>" + userName2 + "'s score: " + finalScore2 + "</div>";
+        outputScreen.setText(summary);
+        JOptionPane.showMessageDialog(null, outputScreen);
+    }
 
-        // display score for both player
-        message = userName1 + "'s score is ";
-        message2 = userName2 + "'s score is ";
-        JOptionPane.showMessageDialog(null, won + "\n" + message + finalScore1 + " \n" + message2 + finalScore2);
-
-    } // playerTwo
 
 } // class
