@@ -199,7 +199,7 @@ public class secondHand {
             // player input
 
             message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
-            		+ userName + " please select your positive single digit number<br>to be subtracted against the bot's number to receive your point</div>";
+            		+ userName + " please select your positive single digit number.<br>This will be subtracted from the bot's number<brThe result will be your score.</div>";
         	outputScreen.setText(message);
             do {
 
@@ -399,6 +399,7 @@ public class secondHand {
         String msg1 = "";
         String msg2 = "";
         String summary = "";
+        String error = "";
 
         JEditorPane outputScreen = new JEditorPane();
         outputScreen.setContentType("text/html");
@@ -408,12 +409,45 @@ public class secondHand {
         outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>Two player selected</div>");
         JOptionPane.showMessageDialog(null, outputScreen);
 
-        // get player names
-        outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>What is your name, Player One?</div>");
-        userName1 = JOptionPane.showInputDialog(null, outputScreen);
-
-        outputScreen.setText("<div style='color:#000;font-family:verdana;font-size:10px'>What is your name, Player Two?</div>");
-        userName2 = JOptionPane.showInputDialog(null, outputScreen);
+        // get player names - error checking as well
+    	outputScreen.setText(msg1);
+    	do {   
+        	userName1 = "temp";
+    		msg1 = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
+            		+ error + "Player one: What is your name?</div>";
+            outputScreen.setText(msg1);
+            userName1 = JOptionPane.showInputDialog(null, outputScreen);
+            if (userName1 == null) {
+            	System.exit(0);
+            } // if
+            
+            if (userName1.length() == 0) {
+            	error = "Your name can't be empty <br>";
+                continue;
+            } // if
+            break;
+        } while (true);
+    	
+    	error = "";
+    	outputScreen.setText(msg2);
+    	do {   
+    		userName2 = "temp";
+    		msg2 = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
+            		+ error + "Player two: What is your name?</div>";
+            outputScreen.setText(msg2);
+            userName2 = JOptionPane.showInputDialog(null, outputScreen);
+            if (userName2 == null) {
+            	System.exit(0);
+            } // if
+            
+            if (userName2.length() == 0) {
+            	error = "Your name can't be empty <br>";
+                continue;
+            } // if
+            break;
+            
+        // player input
+        } while (true);
 
         for (int f = 0; f < 5; f++) {
             numP1 = 0;
