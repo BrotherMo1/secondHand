@@ -1,4 +1,3 @@
-
 package secondHand_kaitoMo;
 
 import java.io.BufferedReader;
@@ -18,11 +17,11 @@ import java.io.*;
 public class secondHand {
 
     public static void main(String[] args) {
-    	
-   	 UIManager UI = new UIManager();
-   	 UIManager.put("OptionPane.background", Color.white);
-   	 UIManager.put("Panel.background", Color.white);
-     
+
+        UIManager UI = new UIManager();
+        UIManager.put("OptionPane.background", Color.white);
+        UIManager.put("Panel.background", Color.white);
+
         do {
             int choice = mainMenu();
 
@@ -48,17 +47,17 @@ public class secondHand {
     public static int mainMenu() {
         int choice = 0;
         String menu = "";
-        
+
         // prepare menu for HTML
         JEditorPane outputScreen = new JEditorPane();
-    	outputScreen.setContentType("text/html");
-    	outputScreen.setEditable(false);
-    	outputScreen.setText(menu);
-    	
-    	 
-        menu = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
-         		+ "Second Hand Main Menu <br> choose an option:</div>";
-     	outputScreen.setText(menu);
+        outputScreen.setContentType("text/html");
+        outputScreen.setEditable(false);
+        outputScreen.setText(menu);
+
+
+        menu = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">" +
+            "Second Hand Main Menu <br> choose an option:</div>";
+        outputScreen.setText(menu);
         Object[] options = {
             "Instructions",
             "1P",
@@ -72,19 +71,19 @@ public class secondHand {
     } // mainMenu
 
     public static void instructions() {
-      	   
-    	String instructions = "";
-    	
-    	// prepare instructions for use of HTML
-    	JEditorPane outputScreen = new JEditorPane();
-    	outputScreen.setContentType("text/html");
-    	outputScreen.setEditable(false);
-    	outputScreen.setText(instructions);
 
-        instructions = 
-        	"<div style=\"background-color:;border-radius:20px;font-family:verdana\">"
-        	+ "<h1><b>Second Hand</b></h1>\r" +
-            "\r\n" + 
+        String instructions = "";
+
+        // prepare instructions for use of HTML
+        JEditorPane outputScreen = new JEditorPane();
+        outputScreen.setContentType("text/html");
+        outputScreen.setEditable(false);
+        outputScreen.setText(instructions);
+
+        instructions =
+            "<div style=\"background-color:;border-radius:20px;font-family:verdana\">" +
+            "<h1><b>Second Hand</b></h1>\r" +
+            "\r\n" +
             "<h2>Players: 1-2</h2>\r" +
             "\r" +
             "<h3>Objective</h3>\r" +
@@ -132,47 +131,47 @@ public class secondHand {
         int finalScoreP = 0;
         int turn = 0;
         int[] result1 = new int[(int)(Math.random() * 7) + 7];
-        int [] resultCom;
+        int[] resultCom;
         String message = "";
         String won = "";
         String input = "";
         String output = "";
         String userName = "";
         String error = "";
-        
+
         // make sure result1 has an odd length
         if (result1.length % 2 == 0) {
-        	result1 = new int [result1.length + 1];
+            result1 = new int[result1.length + 1];
         }
-        resultCom = new int [result1.length];
-        
-    	// prepare instructions for use of HTML
-    	JEditorPane outputScreen = new JEditorPane();
-    	outputScreen.setContentType("text/html");
-    	outputScreen.setEditable(false);
-    	
-    	
+        resultCom = new int[result1.length];
+
+        // prepare instructions for use of HTML
+        JEditorPane outputScreen = new JEditorPane();
+        outputScreen.setContentType("text/html");
+        outputScreen.setEditable(false);
 
 
-    	outputScreen.setText(message);
-    	do {   
-        	message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
-            		+ error + "What is your name?</div>";
+
+
+        outputScreen.setText(message);
+        do {
+            message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">" +
+                error + "What is your name?</div>";
             outputScreen.setText(message);
             userName = JOptionPane.showInputDialog(null, outputScreen);
             if (userName == null) {
-            	System.exit(0);
+                System.exit(0);
             } // if
-            
+
             if (userName.length() == 0) {
-            	error = "Your name can't be empty <br>";
+                error = "Your name can't be empty <br>";
                 continue;
             } // if
             break;
         } while (true);
-    	
-    	
-    	
+
+
+
         // difficulty
         Object[] options = {
             "Easy",
@@ -188,19 +187,19 @@ public class secondHand {
         if (choice == -1 || choice == 3) {
             System.exit(0);
         } // if 
-        
+
         // turns message       
         message = "There will be " + (result1.length - 1) + " turns";
         outputScreen.setText(message);
         JOptionPane.showMessageDialog(null, outputScreen);
-        
+
         for (int i = 1; i < result1.length; i++) {
 
             // player input
 
-            message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
-            		+ userName + " please select your positive single digit number.<br>This will be subtracted from the bot's number<brThe result will be your score.</div>";
-        	outputScreen.setText(message);
+            message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">" +
+                userName + " please select your positive single digit number.<br>This will be subtracted from the bot's number<brThe result will be your score.</div>";
+            outputScreen.setText(message);
             do {
 
                 input = JOptionPane.showInputDialog(null, outputScreen);
@@ -211,15 +210,15 @@ public class secondHand {
                 try {
                     numP = Integer.parseInt(input);
                 } //try
-                catch (Exception e) {               	 	
-                    message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
-                    		+ "That's not a valid number, please enter a positive number. </div>";
+                catch (Exception e) {
+                    message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">" +
+                        "That's not a valid number, please enter a positive number. </div>";
                     continue;
                 } //catch
                 //check additional validity with if statements
-                if (numP < 0 || numP > 9) {                	
-                    message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
-                    		+ userName + "your number must be positive and under 10. Please try again. </div>";
+                if (numP < 0 || numP > 9) {
+                    message = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">" +
+                        userName + "your number must be positive and under 10. Please try again. </div>";
                     continue;
                 } // if
                 break;
@@ -254,7 +253,7 @@ public class secondHand {
                     break;
                 case 1:
 
-				// if rand = between 0 and 4 choose best num
+                    // if rand = between 0 and 4 choose best num
                     // if rand = between 5 and 8 choose med num
                     // if rand = between 9 and 10 choose worst num
                     switch (rand) {
@@ -329,8 +328,8 @@ public class secondHand {
 
                 } // for
 
-                message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
-                		+ "The Bot chose: " + com + "<br>" + userName + " you chose: " + numP + "<br>The bot's number is: " + output + "</div>";
+                message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">" +
+                    "The Bot chose: " + com + "<br>" + userName + " you chose: " + numP + "<br>The bot's number is: " + output + "</div>";
                 outputScreen.setText(message);
                 JOptionPane.showMessageDialog(null, outputScreen);
             } // if
@@ -350,9 +349,9 @@ public class secondHand {
                     } // if
 
                 } // for
-                
-                message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
-                		+ "The Bot chose: " + com + "<br>" + userName + " you chose: " + numP + "<br>Your number is: " + output + "</div>";
+
+                message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">" +
+                    "The Bot chose: " + com + "<br>" + userName + " you chose: " + numP + "<br>Your number is: " + output + "</div>";
                 outputScreen.setText(message);
                 JOptionPane.showMessageDialog(null, outputScreen);
             } // else
@@ -366,16 +365,16 @@ public class secondHand {
             finalScoreP += result1[f];
             finalScoreCom += resultCom[f];
         } // for
-        
+
         // provide winning message
         if (finalScoreP > finalScoreCom) {
-        	won = userName + " won! ";
+            won = userName + " won! ";
         } else {
-        	won = "The bot won!";
+            won = "The bot won!";
         } // else
-        
-        message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">"
-        		+ won + "<br>" + userName + ", your final score is : " + finalScoreP + "<br>The bot's final score is: " + finalScoreCom + "</div>";
+
+        message = "<div style=\"color:#000;font-family:verdana;font-size:10px\">" +
+            won + "<br>" + userName + ", your final score is : " + finalScoreP + "<br>The bot's final score is: " + finalScoreCom + "</div>";
         outputScreen.setText(message);
         JOptionPane.showMessageDialog(null, outputScreen);
     } // onePlayer
@@ -410,43 +409,43 @@ public class secondHand {
         JOptionPane.showMessageDialog(null, outputScreen);
 
         // get player names - error checking as well
-    	outputScreen.setText(msg1);
-    	do {   
-        	userName1 = "temp";
-    		msg1 = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
-            		+ error + "Player one: What is your name?</div>";
+        outputScreen.setText(msg1);
+        do {
+            userName1 = "temp";
+            msg1 = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">" +
+                error + "Player one: What is your name?</div>";
             outputScreen.setText(msg1);
             userName1 = JOptionPane.showInputDialog(null, outputScreen);
             if (userName1 == null) {
-            	System.exit(0);
+                System.exit(0);
             } // if
-            
+
             if (userName1.length() == 0) {
-            	error = "Your name can't be empty <br>";
+                error = "Your name can't be empty <br>";
                 continue;
             } // if
             break;
         } while (true);
-    	
-    	error = "";
-    	outputScreen.setText(msg2);
-    	do {   
-    		userName2 = "temp";
-    		msg2 = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">"
-            		+ error + "Player two: What is your name?</div>";
+
+        error = "";
+        outputScreen.setText(msg2);
+        do {
+            userName2 = "temp";
+            msg2 = "<div style=\"color:#0000;font-family:verdana;font-size:10px\">" +
+                error + "Player two: What is your name?</div>";
             outputScreen.setText(msg2);
             userName2 = JOptionPane.showInputDialog(null, outputScreen);
             if (userName2 == null) {
-            	System.exit(0);
+                System.exit(0);
             } // if
-            
+
             if (userName2.length() == 0) {
-            	error = "Your name can't be empty <br>";
+                error = "Your name can't be empty <br>";
                 continue;
             } // if
             break;
-            
-        // player input
+
+            // player input
         } while (true);
 
         for (int f = 0; f < 5; f++) {
@@ -454,15 +453,15 @@ public class secondHand {
             numP2 = 0;
 
             if (turn % 2 == 0) {
-                msg1 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName1 + 
-                       ", select your number to stop " + userName2 + " from scoring.</div>";
-                msg2 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName2 + 
-                       ", select your number to be subtracted against " + userName1 + " to score.</div>";
+                msg1 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName1 +
+                    ", select your number to stop " + userName2 + " from scoring a high number.</div>";
+                msg2 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName2 +
+                    ", select your number to be subtracted against " + userName1 + " to score.</div>";
             } else {
-                msg1 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName1 + 
-                       ", select your number to be subtracted against " + userName2 + " to score.</div>";
-                msg2 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName2 + 
-                       ", select your number to stop " + userName1 + " from scoring.</div>";
+                msg1 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName1 +
+                    ", select your number to be subtracted against " + userName2 + " to score.</div>";
+                msg2 = "<div style='color:#000;font-family:verdana;font-size:10px'>" + userName2 +
+                    ", select your number to stop " + userName1 + " from scoring a high number.</div>";
             }
 
             // Player 1 input
@@ -541,8 +540,8 @@ public class secondHand {
         }
 
         summary = "<div style='color:#000;font-family:verdana;font-size:10px'>" +
-                         won + "<br>" + userName1 + "'s score: " + finalScore1 + 
-                         "<br>" + userName2 + "'s score: " + finalScore2 + "</div>";
+            won + "<br>" + userName1 + "'s score: " + finalScore1 +
+            "<br>" + userName2 + "'s score: " + finalScore2 + "</div>";
         outputScreen.setText(summary);
         JOptionPane.showMessageDialog(null, outputScreen);
     }
